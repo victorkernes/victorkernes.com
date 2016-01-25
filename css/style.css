@@ -111,12 +111,12 @@ h2 {
 }
 
 /* links */
- a {
+ nav a {
   color: #404040;
 }
 
 /* nav link */
-a:visited {
+nav a:visited {
   color: #404040;
 }
 
@@ -190,5 +190,8 @@ MEDIA QUERIES
 
 span a {
   color: #2D9AD2;
+}
 
+span a:visited {
+  color: #2D9AD2;
 }
