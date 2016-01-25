@@ -6,15 +6,42 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-#wrapper {
-  max-width: 100%;
-  margin: 0 auto;
+h1 {
+  font-family: 'Crete Round', serif;
+  font-size: 6em;
+  letter-spacing: 2px;
+  text-align: center;
+  padding: 70px 0 15px 0;
+  margin: 0;
+  color: #fff;
 }
 
+h2 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 2.2em;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 1px;
+  margin: 0;
+}
 
+h3 {
+  text-align: center;
+  padding-top: 40px;
+  margin-top: 15px;
+  font-size: 4em;
+}
 
-a {
-  text-decoration: none;
+section {
+  padding-bottom: 80px;
+}
+
+.content {
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 50%;
+  margin: 0 auto;
 }
 
 p {
@@ -22,74 +49,38 @@ p {
   font-weight: 400;
 }
 
-li {
-  font-size: .8em;
-}
-
 /**********************************
 NAVIGATION
 ***********************************/
 
-#logo {
-  width: 80px;
-  height: 80px;
-  float: left;
-  padding-right: 15px;
-  text-align: center;
-}
-
-h1, h2 {
-  padding: 0;
-  margin: 0;
-  display: block;
-}
-
-#logo-name {
-  display: inline-block;
-  float: left;
-}
-
-h1 {
-  font-size: 28px;
-  font-weight: 700;
-  padding-top: 10px;
-}
-
-h2 {
-  font-size: 22px;
-  font-weight: 400;
-}
-
-h3 {
-  text-align: center;
-  padding-top: 15px;
-  margin-top: 15px;
-}
 
 header {
-  height: 100px;
-  max-width: 900px;
+  height: 400px;
   padding: 15px 0 0 15px;
-  margin: 0 auto;
-}
-
-section {
-  border-bottom: 2px solid #303E49;
+  background-color: #FFD351;
 }
 
 nav {
-  text-align: center;
   list-style: none;
   font-size: 1.3em;
-  float: right;
-  display: inline-block;
-  padding-right: 30px;
-  max-width: 900px;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  padding-top: 100px;
+}
+
+nav ul {
+  display: block;
+  margin: 0 auto;
 }
 
 nav li {
   display: inline-block;
   padding: 10px;
+  font-size: 1em;
+  margin: 0 auto;
+  color: #404040;
 }
 /**********************************
 FOOTER
@@ -98,9 +89,10 @@ FOOTER
 footer {
   font-size: 1em;
   font-weight: 400;
-  width: 100%;
-  clear: both;
   text-align: center;
+  background-color: #F9FAFA;
+  border-top: 1px solid #e8ebee;
+  border-bottom: 1px solid #e8ebee;
 }
 
 /**********************************
@@ -110,25 +102,22 @@ COLORS
 /* site body */
 body {
   background-color: #fff;
-  color: #2C333E;
+  color: #404040;
 }
 
-/* header */
-
-
 /* logo text */
-h1, h2 {
-  color: #303e49;
+h2 {
+  color: #404040;
 }
 
 /* links */
-a {
-  color: #303e49;
+ a {
+  color: #404040;
 }
 
 /* nav link */
 a:visited {
-  color: #303e49;
+  color: #404040;
 }
 
 /* selected link */
@@ -138,7 +127,7 @@ a {
 }
 
  a:hover {
-  color: #4D91C6;
+  color: #2D9AD2;
   -webkit-transition-property: border;
   -moz-transition-property: border;
   transition-property: border;
@@ -148,20 +137,8 @@ a {
   border-bottom: 1px solid;
 }
 
-#content {
-  width: 600px;
-  margin: 0 auto;
-}
-
-img {
-  background-size: cover;
-  width: 100%;
-  max-height: 600px;
-  overflow: hidden;
-}
-
 .selected {
-  color: #4D91C6;
+  color: #404040;
   -webkit-transition-property: border;
   -moz-transition-property: border;
   transition-property: border;
@@ -170,4 +147,48 @@ img {
 
 .twitter-follow-button {
   margin: 0 auto;
+  padding: 15px;
+}
+
+/**********************************
+MEDIA QUERIES
+***********************************/
+
+@media (max-width: 769px) {
+
+  .content {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 3.2em;
+  }
+
+  h2 {
+    font-size: 1.6em;
+  }
+}
+
+.projects {
+  display: inline-block;
+}
+
+.projects li {
+  width: 100px;
+  height: 100px;
+  color: #fff;
+  background-color: #D6D6D6;
+  border-radius: 15px;
+  display: inline-block;
+  clear: both;
+  padding: 20px;
+  margin: 10px;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+span a {
+  color: #2D9AD2;
+
 }
