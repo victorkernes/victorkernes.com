@@ -1,0 +1,70 @@
+<svg width="142" height="144" viewBox="0 0 142 144" version="2.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>Vector-Logo-Shadow</title>
+<desc>Created using Figma (9000)</desc>
+<g id="Canvas" transform="translate(-2426 -955)" figma:type="canvas">
+<g id="Vector-Logo-Shadow" style="mix-blend-mode:normal;" filter="url(#filter0_d)" figma:type="group">
+<g id="White Space" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path0_fill" transform="matrix(1 0 0 1 2432 959)" fill="#FFFFFF" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Outline" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path1_stroke" transform="matrix(1 0 0 1 2440 967)" fill="#F99134" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Vector" style="mix-blend-mode:normal;" figma:type="vector-operation">
+<use xlink:href="#path2_fill" transform="matrix(1 0 0 1 2456 993)" fill="#F99134" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d" filterUnits="userSpaceOnUse" x="2426" y="955" width="142" height="144" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<desc>type="dropShadow" x="0" y="4" size="8" spread="0" color="0,0,0,0.25" blend="normal"</desc>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 0"/>
+<feOffset dx="0" dy="4"/>
+<feGaussianBlur stdDeviation="4"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+<path id="path0_fill" d="
+M 128 64
+C 128 99.3462 99.3462 128 64 128
+C 28.6538 128 0 99.3462 0 64
+C 0 28.6538 28.6538 0 64 0
+C 99.3462 0 128 28.6538 128 64
+Z"/>
+<path id="path1_stroke" d="
+M 110 56
+C 110 85.8234 85.8234 110 56 110
+L 56 114
+C 88.0325 114 114 88.0325 114 56
+L 110 56
+Z
+M 56 110
+C 26.1766 110 2 85.8234 2 56
+L -2 56
+C -2 88.0325 23.9675 114 56 114
+L 56 110
+Z
+M 2 56
+C 2 26.1766 26.1766 2 56 2
+L 56 -2
+C 23.9675 -2 -2 23.9675 -2 56
+L 2 56
+Z
+M 56 2
+C 85.8234 2 110 26.1766 110 56
+L 114 56
+C 114 23.9675 88.0325 -2 56 -2
+L 56 2
+Z"/>
+<path id="path2_fill" d="
+M 0 0
+L 40 80
+L 80 0
+L 62.1981 0
+L 40 46.4583
+L 17.8019 0
+L 0 0
+Z"/>
+</defs>
+</svg>

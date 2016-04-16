@@ -1,0 +1,42 @@
+<svg width="28" height="12" viewBox="0 0 28 12" version="2.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>Down Arrow</title>
+<desc>Created using Figma (9000)</desc>
+<g id="Canvas" transform="translate(-2807 -1042)" figma:type="canvas">
+<g id="Down Arrow" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path0_stroke" transform="translate(2809 1044)" fill="#F99134" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+<defs>
+<path id="path0_stroke" d="
+M 0.5547 -0.83205
+L -0.27735 -1.38675
+L -1.38675 0.27735
+L -0.5547 0.83205
+L 0.5547 -0.83205
+Z
+M 12 8
+L 11.4453 8.83205
+L 12 9.20185
+L 12.5547 8.83205
+L 12 8
+Z
+M 24.5547 0.83205
+L 25.3868 0.27735
+L 24.2774 -1.38675
+L 23.4453 -0.83205
+L 24.5547 0.83205
+Z
+M -0.5547 0.83205
+L 11.4453 8.83205
+L 12.5547 7.16795
+L 0.5547 -0.83205
+L -0.5547 0.83205
+Z
+M 12.5547 8.83205
+L 24.5547 0.83205
+L 23.4453 -0.83205
+L 11.4453 7.16795
+L 12.5547 8.83205
+Z"/>
+</defs>
+</svg>
