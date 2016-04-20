@@ -16,6 +16,7 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 16px;
   font-weight: 300;
+  width: 100%;
 }
 
 .page-container {
@@ -90,20 +91,19 @@ header {
 }
 
 .hobbies {
+  width: 100%;
   margin-top: 56px;
   display: flex;
+  flex-flow: row wrap;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
 }
 
-.hobbies > div {
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
+.hobby {
   background-color: #F9FAFA;
   border-radius: 4px;
-  margin: 8px;
   padding: 16px;
+  max-width: 20rem;
 }
 
 .content-title {
@@ -122,18 +122,16 @@ h2 {
 .contact-me {
   padding-top: 160px;
   padding-bottom: 140px;
-  height: auto;
-  background-color: #F99134;
+  background-color: #f99134;
 }
 
 .contact-me h3 {
   font-size: 2rem;
   font-weight: 300;
   color: #fff;
-  padding-top: 24px;
-  padding-bottom: 32px;
+  padding: 24px 24px 32px 24px;;
   text-align: center;
-  max-width: 800px;
+  max-width: 50rem;
   margin: 0 auto;
 }
 
@@ -160,28 +158,26 @@ p a:hover {
 }
 
 .images {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 0 auto;
-  margin-top: 56px;
-  padding-bottom: 64px;
   width: 100%;
+  margin-top: 56px;
+  display: flex;
+  flex-flow: row wrap;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.images img {
-  width: auto;
-  max-width: 480px;
-  max-height: 500px;
-  padding: 1rem;
-  display: inline-block;
+.img-1 img {
+  max-width: 25rem;
+  height: auto;
+  margin: 2rem;
 }
 
-.images p {
+.img-1 p {
   text-align: center;
+  max-width: 20rem;
   padding: 16px;
 }
+
 .email-button {
   text-align: center;
   display: block;
@@ -204,10 +200,11 @@ p a:hover {
 }
 
 footer {
+  width: 100%;
   text-align: center;
   background-color: #F9FAFA;
   color: #808080;
-  padding-top: 24px;
+  padding: 24px;
   height: 6rem;
   border-top: 1px solid #e8e8e8;
 }
@@ -222,4 +219,16 @@ footer {
   -moz-transition: opacity 1.0s ease-in;
   -o-transition: opacity 1.0s ease-in;
   opacity: 1;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .contact-me h3 {
+    font-size: 1.5rem;
+  }
+
+  .img-1 img {
+      max-width: 20rem;
+      height: auto;
+      margin: 2rem;
+    }
 }
