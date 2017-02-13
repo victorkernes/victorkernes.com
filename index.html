@@ -1,98 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
-  <meta charset="utf-8">
-  <title>Victor Kernes Jr. - Freelance Designer and Developer</title>
-  <meta name="description" content="Victor Kernes is a Freelance Designer and Developer.">
-  <meta name="author" content="Victor Kernes Jr.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@victorkernes">
-  <meta name="twitter:title" content="Victor Kernes Jr.">
-  <meta name="twitter:description" content="Victor Kernes is a Freelance Designer and Developer.">
-  <meta name="twitter:image" content="http://victorkernes.com/img/">
-  <style>
-  * {
-      margin: 0;
-      padding: 0;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-text-size-adjust: none;
-  }
-
-  body {
-      position: fixed;
-      display: flex;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-  }
-
-  h1 {
-      color: #4D5A68;
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 5px;
-  }
-
-  h2 {
-      color: #9DABBA;
-      font-size: 1.25rem;
-      font-weight: 400;
-      margin-bottom: 1.25rem;
-  }
-
-  p {
-    color: #4D5A68;
-    line-height: 1.2;
-    margin-bottom: 1.25rem;
-    text-align: left;
-  }
-
-  p a:hover, a.active {
-    color: #C8D0D9;
-  }
-
-  a {
-      text-decoration: none;
-      color: #4D5A68;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      transition: color .1s ease-in-out;
-  }
-
-  a:hover, a.active {
-      color: #C8D0D9;4D5A68
-  }
-
+<meta charset="utf-8">
+<title>Victor Kernes Jr. - Product Designer</title>
+<meta name="description" content="Victor Kernes Jr. is a Product Designer. Shoot me an email if you need help with a project at hi@victorkernes.com.">
+<meta name="author" content="Victor Kernes Jr.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@victorkernes">
+<meta name="twitter:title" content="Victor Kernes Jr.">
+<meta name="twitter:description" content="Victor Kernes is a Product Designer.">
+<meta name="twitter:image" content="http://victorkernes.com/img/">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: none;
+}
+html {
+  font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica,helvetica neue,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
+}
+body {
+  background-color: #222;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+h1 {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+h1 a {
+  color: #fff;
+  text-decoration: none;
+}
+h2 {
+  color: #888;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: .125rem;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+p {
+  color: #eee;
+  font-size: 1.125rem;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+p a {
+  color: rgba(0, 122, 255, 1);
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: color .2s ease-in-out;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+p a:hover {
+  -webkit-transition-property: border;
+  -moz-transition-property: border;
+  transition-property: border;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  border-bottom: 2px solid;
+}
+nav a {
+  text-decoration: none;
+  color: #eee;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: color .2s ease-in-out;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+nav a:hover, a.active {
+  color: rgba(0, 122, 255, 1);
+  -webkit-transition-property: border;
+  -moz-transition-property: border;
+  transition-property: border;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  border-bottom: 2px solid;
+}
+.container {
+  padding: 1rem;
+}
+.container nav {
+  border-top: 1px solid #333;
+  padding-top: 1rem;
+  margin-bottom: 1.25rem;
+}
+.container nav a + a {
+  margin-left: 40px;
+}
+.measure {
+  max-width: 20rem;
+}
+.title {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .25rem;
+  color: #333;
+  text-transform: uppercase;
+  padding-bottom: 1rem;
+}
+@media screen and (min-width: 30em) {
   .container {
-      max-width: 25rem;
-      padding: 1rem;
-      margin: 0 auto;
-      text-align: center;
-      font-family: "SFMono-Regular", "Menlo", "Monaco", monospace;
+    position: absolute;
+    padding: 1rem;
+    top: 20%;
+    left: 15%;
+  }
+}
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.animated.flipOutX,
+.animated.flipOutY,
+.animated.bounceIn,
+.animated.bounceOut {
+  -webkit-animation-duration: .75s;
+  animation-duration: .75s;
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
   }
 
-  .container nav {
-      color: #C8D0D9;
-      margin-bottom: 1.25rem;
-      font-size: 1rem;
-      font-weight: 500;
-      text-transform: uppercase;
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
 
-  .container nav a + a {
-      margin-left: 40px;
+  to {
+    opacity: 1;
   }
-  </style>
-  <body>
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+</style>
+  <body class="animated fadeIn">
     <section class="container">
-      <h1>Victor Kernes Jr.</h1>
+      <h1>
+        <a href="/">Victor Kernes Jr.</a>
+      </h1>
       <h2>
-        Freelance Designer and Developer
+        Product Designer
       </h2>
+      <h3 class="title">
+        About
+      </h3>
+      <p class="measure">
+        Husband, Uncle, Friend, Teammate, Photographer, Traveler, and Learner.
+      </p>
+      <h3 class="title">
+        Latest
+      </h3>
+      <p class="measure">
+        Check out my works in progress over at <a href="https://dribbble.com/victorkernes" target="_blank">Dribbble</a>.
+      </p>
+      <h3 class="title">
+        Interests
+      </h3>
+      <p class="measure">
+        My favorite color is indigo, sport is basketball, and preferred use of free time is reading and traveling with my wife.
+      </p>
       <nav>
-        <a href="http://victorkernes.com/work.html">Work</a>
-        <a href="https://github.com/victorkernes" target="_blank">GitHub</a>
-        <a href="https://twitter.com/victorkernes" target="_blank">Twitter</a>
+        <a href="mailto:hi@victorkernes.com">hi@victorkernes.com</a>
+        <a href="https://twitter.com/victorkernes" target="_blank">@victorkernes</a>
       </nav>
     </section>
     <script async src="//www.google-analytics.com/analytics.js"></script>
