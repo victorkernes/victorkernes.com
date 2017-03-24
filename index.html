@@ -1,64 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8">
-<title>Victor Kernes Jr. - Product Designer</title>
-<meta name="description" content="Victor Kernes Jr. is a Product Designer. Shoot me an email if you need help with a project at hi@victorkernes.com.">
-<meta name="author" content="Victor Kernes Jr.">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:site" content="@victorkernes">
-<meta name="twitter:title" content="Victor Kernes Jr.">
-<meta name="twitter:description" content="Victor Kernes is a Product Designer.">
-<meta name="twitter:image" content="http://victorkernes.com/img/">
+<title>Victor Kernes</title>
+<meta name="description" content="User Experience & Visual Designer from San Luis Obispo, CA.">
+<meta name="author" content="Victor Kernes">
+<meta name="viewport" content="initial-scale=1">
+<meta name="keywords" content="Design, UI, UX, iOS, App, Mac">
 <style>
 * {
   margin: 0;
   padding: 0;
+  cursor: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 html {
   font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica,helvetica neue,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
 }
-::selection {
-  background: rgba(0, 122, 255, 1);
-} 
 body {
-  background-color: #222;
-  position: fixed;
+  background-color: rgba(36, 41, 46, 1); /*#000*/
+  position: relative;
   display: flex;
   align-items: center;
   width: 100%;
   height: 100%;
 }
 h1 {
-  color: #fff;
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 5px;
+  color: rgba(255, 255, 255, 1);
+  font-size: 1.5rem;
+  font-weight: normal;
+  text-align: left;
 }
 h1 a {
-  color: #fff;
+  color: rgba(255, 255, 255, 1);
   text-decoration: none;
 }
-h2 {
-  color: #888;
-  font-size: 1rem;
-  font-weight: 400;
-  letter-spacing: .125rem;
-  margin-bottom: 1.25rem;
+h1 a:hover {
+  color: rgba(3, 102, 214, 1);
+}
+span {
+  display: block;
+  font-size: .5rem;
+  padding-top: .5rem;
+  font-weight: 700;
+  letter-spacing: .25rem;
+  color: rgba(253, 152, 0, 1);
   text-transform: uppercase;
 }
+h2 {
+  max-width: 60rem;
+  width: 100%;
+  color: rgba(238, 238, 238, 1);
+  font-size: 2rem;
+  font-weight: 400;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
 p {
-  color: #eee;
+  color: rgba(255, 255, 255, .8); /*rgba(255,255,255,.8)*/
   font-size: 1.125rem;
-  line-height: 1.2;
+  font-weight: normal;
+  line-height: 1.4;
   margin-bottom: 1.25rem;
 }
 p a {
-  color: rgba(0, 122, 255, 1);
+  color: rgba(3, 102, 214, 1); /*rgba(0, 122, 255, .8)*/
   text-decoration: none;
+  font-weight: 600;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: color .2s ease-in-out;
   border-bottom: 2px solid transparent;
@@ -72,16 +83,21 @@ p a:hover {
   -moz-transition-duration: 0.2s;
   transition-duration: 0.2s;
   border-bottom: 2px solid;
+  color: rgba(3, 102, 214, 1);
 }
-nav a {
+.social a {
+  color: #fff;
+}
+li a {
+  color: rgba(255, 255, 255, 1);
+  font-weight: 600;
   text-decoration: none;
-  color: #eee;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 1);
   transition: color .2s ease-in-out;
   border-bottom: 2px solid transparent;
   padding-bottom: 2px;
 }
-nav a:hover, a.active {
+li a:hover {
   color: rgba(0, 122, 255, 1);
   -webkit-transition-property: border;
   -moz-transition-property: border;
@@ -89,18 +105,68 @@ nav a:hover, a.active {
   -webkit-transition-duration: 0.2s;
   -moz-transition-duration: 0.2s;
   transition-duration: 0.2s;
-  border-bottom: 2px solid;
+  border-bottom: 1px solid;
+}
+nav a {
+  text-decoration: none;
+  color: #fff;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: color .2s ease-in-out;
+}
+nav a:hover, a.active {
+  color: rgba(0, 122, 255, 1);
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+ul {
+  list-style: none;
+}
+li {
+  color: rgba(255, 255, 255, .8);
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
 }
 .container {
-  padding: 1rem;
+  max-width: 60rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 8rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
-.container nav {
-  border-top: 1px solid #333;
+footer {
+  display: inline-flex;
+  flex-flow: row wrap;
   padding-top: 1rem;
   margin-bottom: 1.25rem;
+  width: 100%;
+}
+footer p {
+  font-size: inherit;
+  font-weight: 600;
+}
+footer a {
+  color: #fff;
+}
+.divide {
+  height: 2px;
+  width: 2rem;
+  background-color: rgba(255, 255, 255, 1);
+  margin-bottom: 1.5rem;
+}
+.container nav {
+  font-size: 1.125rem;
 }
 .container nav a + a {
   margin-left: 40px;
+}
+.twitter:hover {
+  color: rgba(85, 172, 238, 1);
+}
+.dribbble:hover {
+  color: rgba(234, 76, 137, 1);
 }
 .measure {
   max-width: 20rem;
@@ -108,30 +174,21 @@ nav a:hover, a.active {
 .title {
   font-size: .75rem;
   font-weight: 700;
-  letter-spacing: .25rem;
-  color: #333;
+  letter-spacing: .15rem;
+  color: rgba(255,255,255, 1); /*444*/
   text-transform: uppercase;
   padding-bottom: 1rem;
 }
-@media screen and (min-width: 30em) {
-  .container {
-    position: absolute;
-    padding: 1rem;
-    top: 20%;
-    left: 15%;
-  }
-}
-.animated {
+.animate {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
-
-.animated.flipOutX,
-.animated.flipOutY,
-.animated.bounceIn,
-.animated.bounceOut {
+.animate.flipOutX,
+.animate.flipOutY,
+.animate.bounceIn,
+.animate.bounceOut {
   -webkit-animation-duration: .75s;
   animation-duration: .75s;
 }
@@ -144,7 +201,6 @@ nav a:hover, a.active {
     opacity: 1;
   }
 }
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -154,52 +210,160 @@ nav a:hover, a.active {
     opacity: 1;
   }
 }
-
 .fadeIn {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
 }
+@media only screen and (min-width: 550px) {
+  .container {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 10%;
+  }
+  .wrap {
+    display: inline-flex;
+    flex-flow: row wrap;
+  }
+  .flex-column {
+    display: inline-flex;
+    flex-direction: column;
+    width: 40%;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+  }
+  .job {
+    width: 20%;
+  }
+}
+@media only screen and (max-width: 540px) {
+  .container {
+    margin: 0 auto;
+    width: 100%;
+  }
+  h2 {
+    font-size: 1.5rem;
+    width: 100%;
+  }
+  .wrap {
+    display: flex;
+    flex-flow: column;
+  }
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
 </style>
-  <body class="animated fadeIn">
+  <body class="animate fadeIn">
     <section class="container">
       <h1>
-        <a href="/">Victor Kernes Jr.</a>
+        <a href="/">Victor Kernes</a>
       </h1>
       <h2>
-        Product Designer
+        I am a visual & user experience designer. I have a passion for interface design, user experience, & typography.
       </h2>
-      <h3 class="title">
-        About
-      </h3>
-      <p class="measure">
-        Husband, Uncle, Friend, Teammate, Photographer, Traveler, and Learner.
-      </p>
-      <h3 class="title">
-        Latest
-      </h3>
-      <p class="measure">
-        Check out my works in progress over at <a href="https://dribbble.com/victorkernes" target="_blank">Dribbble</a>.
-      </p>
-      <h3 class="title">
-        Interests
-      </h3>
-      <p class="measure">
-        My favorite color is indigo, sport is basketball, and preferred use of free time is reading and traveling with my wife.
-      </p>
-      <nav>
-        <a href="mailto:hi@victorkernes.com">hi@victorkernes.com</a>
-        <a href="https://twitter.com/victorkernes" target="_blank">@victorkernes</a>
-      </nav>
+      <div class="divide"></div>
+      <section class="wrap">
+        <div class="flex-column">
+          <h3 class="title">
+            About
+          </h3>
+          <p class="measure">
+            I enjoy spending time with my wife, traveling, reading, playing basketball, and learning something new everyday.
+          </p>
+          <p class="measure">
+            Currently residing in San Luis Obispo, located along the beautiful Central Coast of California.
+          </p>
+        </div>
+        <div class="flex-column">
+          <h3 class="title">
+            Contact
+          </h3>
+          <p class="measure">
+            I’m always interested in working on new projects. <a href="mailto:hi@victorkernes.com">Email me</a> if you would like to work together.
+          </p>
+          <p class="social">
+            You can also follow me on <a class="twitter" href="https://twitter.com/victorkernes" target="_blank">Twitter</a>, <a class="dribbble" href="https://dribbble.com/victorkernes" target="_blank">Dribbble</a>, or <a href="https://instagram.com/victorkernes" target="_blank">Instagram</a>.
+          </p>
+        </div>
+      </section>
+      <div class="divide"></div>
+      <section class="wrap">
+        <div class="flex-column">
+          <h3 class="title">
+            Work
+          </h3>
+          <ul>
+            <li>
+              <a href="#">Spanish Phrases</a>
+            </li>
+            <li>
+              <a href="#">Mama Jen’s Pies</a>
+              <span>Coming in April</span>
+            </li>
+            <li>
+              <a href="#">Watanabe Racing</a>
+              <span>Coming in May</span>
+            </li>
+            <li>
+              <a href="#">Water Fixers</a>
+              <span>Coming in 2018</span>
+            </li>
+          </ul>
+        </div>
+        <div class="flex-column">
+          <h3 class="title">
+            Capabilities
+          </h3>
+          <ul>
+            <li>Web Design</li>
+            <li>Mobile Design</li>
+            <li>UI / UX Design</li>
+            <li>Social Media</li>
+          </ul>
+        </div>
+      </section>
+      <div class="divide"></div>
+      <section class="wrap">
+        <div class="flex-column job">
+          <h3 class="title">
+            2009-2012
+          </h3>
+          <p class="measure">
+            Customer Service at Trader Joe’s
+          </p>
+        </div>
+        <div class="flex-column job">
+          <h3 class="title">
+            2012-2014
+          </h3>
+          <p class="measure">
+            Sales Team at Unionmade
+          </p>
+        </div><div class="flex-column job">
+          <h3 class="title">
+            2014-Present
+          </h3>
+          <p class="measure">
+            Freelance Designer <a href="mailto:hi@victorkernes.com">Hire me</a>
+          </p>
+        </div>
+        <div class="flex-column job">
+          <h3 class="title">
+            2014-Present
+          </h3>
+          <p class="measure">
+            Marketing / Design at <a href="http://www.lauruscollege.edu" target="_blank">Laurus College</a>
+          </p>
+        </div>
+      </section>
+      <footer>
+        <p>
+          © 2017 <a href="/">Victor Kernes</a>. All rights reserved.
+        </p>
+      </footer>
     </section>
-    <script async src="//www.google-analytics.com/analytics.js"></script>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-79168496-1', 'auto');
-      ga('send', 'pageview');
-    </script>
   </body>
 </html>
