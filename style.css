@@ -168,6 +168,12 @@ img {
 .image {
   max-height: 560px;
   overflow: hidden;
+  transition: .4s;
+  transform: scale(1);
+}
+.image:hover {
+  transition: .4s;
+  transform: scale(1.1);
 }
 .divide {
   height: 2px;
