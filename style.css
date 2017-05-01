@@ -254,6 +254,9 @@ img {
   transition: .4s;
   transform: scale(1.1);
 }
+.full {
+  max-height: 100%;
+}
 .divide {
   height: 2px;
   width: 2rem;
