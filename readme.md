@@ -2,7 +2,7 @@
 ---
 Welcome to my online portfolio!
 
-If you'd like more information, feel free to reach out at [hi@victorkernes.com](mailto:hi@victorkernes.com "Email Victor Kernes").
+If you'd like more information, feel free to reach out at [victokernes@gmail.com](mailto:victorkernes@gmail.com "Email Victor Kernes").
 
 ---
-Copyright © 2017 Victor Kernes
+Copyright © 2014-2018 Victor Kernes
