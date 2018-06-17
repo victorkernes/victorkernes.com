@@ -12,7 +12,6 @@ const Menu = () => (
     <style jsx>{`
         * {
           text-align: center;
-          font-family: -apple-system, BlinkMacSystemFont, sans-serif;
         }
         ul {
           color: #fff;
@@ -21,9 +20,12 @@ const Menu = () => (
           justify-content: space-evenly;
         }
         li {
-          font-size: 18px;
-          padding-left: 12px;
-          padding-right: 12px;
+          font-size: 16px;
+          padding: 2px 8px;
+          margin-right: 8px;
+          background-color: #1B7BF4;
+          border-radius: 2px;
+          text-transform: lowercase;
         }
         ul li a {
           color: #fff;

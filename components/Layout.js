@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Navbar from './Navbar';
 import Menu from './Menu';
 import Content from './Content';
 import Footer from './Footer';
@@ -9,7 +8,6 @@ const Layout = (props) => (
     <Head>
       <title>Victor Kernes</title>
     </Head>
-    <Navbar/>
     <div className="container">
       {props.children}
     </div>
@@ -20,7 +18,6 @@ const Layout = (props) => (
       * {
         margin: 0;
         padding: 0;
-        background-color: #394046;
       }
       `}
     </style>

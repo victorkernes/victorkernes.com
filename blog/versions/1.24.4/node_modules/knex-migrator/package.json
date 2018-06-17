@@ -1,0 +1,75 @@
+{
+  "name": "knex-migrator",
+  "version": "3.1.6",
+  "description": "Database migrations with knex.",
+  "keywords": [
+    "ghost",
+    "migration",
+    "knex",
+    "knex-migrations",
+    "knex migration",
+    "knex migrations",
+    "bookshelf migration",
+    "bookshelf"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:TryGhost/knex-migrator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TryGhost//knex-migrator/issues"
+  },
+  "author": {
+    "name": "Ghost Foundation",
+    "email": "hello@ghost.org",
+    "web": "https://ghost.org"
+  },
+  "main": "lib",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint bin lib",
+    "test": "yarn lint && LEVEL=fatal _mocha --require test/utils.js --report lcovonly -- test/*_spec.js",
+    "coverage": "nyc --reporter=lcov _mocha --require test/utils.js -- test/*_spec.js"
+  },
+  "bin": {
+    "knex-migrator": "./bin/knex-migrator",
+    "knex-migrator-init": "./bin/knex-migrator-init",
+    "knex-migrator-health": "./bin/knex-migrator-health",
+    "knex-migrator-migrate": "./bin/knex-migrator-migrate",
+    "knex-migrator-reset": "./bin/knex-migrator-reset",
+    "knex-migrator-rollback": "./bin/knex-migrator-rollback"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "commander": "2.15.1",
+    "compare-ver": "^2.0.2",
+    "debug": "^2.2.0",
+    "ghost-ignition": "2.9.2",
+    "knex": "^0.14.2",
+    "lodash": "^4.16.4",
+    "moment": "^2.19.3",
+    "nconf": "^0.10.0",
+    "resolve": "1.7.1"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "logging.js"
+  ],
+  "devDependencies": {
+    "eslint": "4.19.1",
+    "grunt": "1.0.2",
+    "grunt-release": "0.14.0",
+    "mocha": "3.1.2",
+    "nyc": "11.7.1",
+    "should": "11.1.1",
+    "sinon": "1.17.6"
+  },
+  "optionalDependencies": {
+    "mysql": "^2.11.1",
+    "sqlite3": "^4.0.0"
+  }
+}

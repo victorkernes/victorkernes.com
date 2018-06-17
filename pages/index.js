@@ -2,38 +2,38 @@ import Layout from '../components/Layout';
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 
-// function getPosts () {
-//   return [
-//     { id: 'hello-nextjs', title: 'Hello Next.js'},
-//     { id: 'learn-nextjs', title: 'Learn Next.js is awesome'},
-//     { id: 'deploy-nextjs', title: 'Deploy apps with ZEIT'},
-//   ]
-// }
-//
-// const PostLink = ({ post }) => (
-//   <li>
-//     <Link as={`/p/${post.id}`} href={`/post?title=${post.title}`}>
-//       <a>{post.title}</a>
-//     </Link>
-//     <style jsx>{`
-//       li {
-//         list-style: none;
-//         margin: 5px 0;
-//       }
-//
-//       a {
-//         text-decoration: none;
-//         color: #fff;
-//         font-family: "Arial";
-//       }
-//
-//       a:hover {
-//         opacity: 0.6;
-//       }
-//       `}
-//     </style>
-//   </li>
-// )
+function getPosts () {
+  return [
+    { id: 'hello-nextjs', title: 'Hello Next.js'},
+    { id: 'learn-nextjs', title: 'Learn Next.js is awesome'},
+    { id: 'deploy-nextjs', title: 'Deploy apps with ZEIT'},
+  ]
+}
+
+const PostLink = ({ post }) => (
+  <li>
+    <Link as={`/p/${post.id}`} href={`/post?title=${post.title}`}>
+      <a>{post.title}</a>
+    </Link>
+    <style jsx>{`
+      li {
+        list-style: none;
+        margin: 5px 0;
+      }
+
+      a {
+        text-decoration: none;
+        color: #fff;
+        font-family: "Arial";
+      }
+
+      a:hover {
+        opacity: 0.6;
+      }
+      `}
+    </style>
+  </li>
+)
 
 
 export default () => (
@@ -41,24 +41,24 @@ export default () => (
     <h1>Victor Kernes</h1>
     <h2>UX Designer, San Francisco</h2>
     <style jsx global>{`
+      @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700');
       * {
         text-align: center;
+        font-family: 'Roboto Mono';
       }
       body {
-        background-color: #394046;
+        background-color: #2A2D30;
         font-weight: 400;
       }
       h1 {
-        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
         color: #fff;
-        font-weight: 400;
-        font-size: 22px;
-        letter-spacing: 0.75px;
+        font-weight: 700;
+        font-size: 32px;
+        letter-spacing: -0.75px;
+        font-family: -apple-system, BlinkMacSystemFont;
       }
       h2 {
-        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
         color: #818EA1;
-        font-style: italic;
         font-weight: 400;
         font-size: 18px;
         letter-spacing: -0.25px;
