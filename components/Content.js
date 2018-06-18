@@ -9,17 +9,12 @@ const Content = () => (
       </ul>
     </main>
     <style jsx>{`
-        main {
-          background: #fff;
-          color: #fff;
-          list-style: none;
-          display: flex;
-          width: 240px;
-          padding: 5rem;
-          border-radius: 4px;
-          margin: 0 auto;
-          margin-bottom: 40px;
-        }
+      main ul {
+        display: inline-flex;
+      }
+      main li:nth-child(1) {
+        margin-right: 8px;
+      }
     `}</style>
   </div>
 );
