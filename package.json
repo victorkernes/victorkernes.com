@@ -2,6 +2,7 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
+    "export": "next export",
     "start": "next start -p 8000"
   },
   "name": "victorkernes.com",
