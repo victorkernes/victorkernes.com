@@ -110,9 +110,9 @@ var PageLoader = function () {
       var script = document.createElement('script');
       var url = this.assetPrefix + '/_next/' + encodeURIComponent(this.buildId) + '/page' + scriptRoute;
       script.src = url;
-      script.type = 'text/javascript';
       script.onerror = function () {
         var error = new Error('Error when loading route: ' + route);
+        error.code = 'PAGE_LOAD_ERROR';
         _this2.pageRegisterEvents.emit(route, { error: error });
       };
 

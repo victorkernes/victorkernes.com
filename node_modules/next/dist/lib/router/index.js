@@ -21,7 +21,6 @@ Object.defineProperty(exports, 'withRouter', {
     return _interopRequireDefault(_withRouter).default;
   }
 });
-exports._notifyBuildIdMismatch = _notifyBuildIdMismatch;
 exports._rewriteUrlForNextExport = _rewriteUrlForNextExport;
 exports.makePublicRouterInstance = makePublicRouterInstance;
 
@@ -29,8 +28,11 @@ var _router = require('./router');
 
 var _router2 = _interopRequireDefault(_router);
 
+var _utils = require('../utils');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/* global window */
 var SingletonRouter = {
   router: null, // holds the actual router instance
   readyCallbacks: [],
@@ -43,7 +45,6 @@ var SingletonRouter = {
 };
 
 // Create public properties and methods of the router in the SingletonRouter
-/* global window */
 var propertyFields = ['components', 'pathname', 'route', 'query', 'asPath'];
 var coreMethodFields = ['push', 'replace', 'reload', 'back', 'prefetch'];
 var routerEvents = ['routeChangeStart', 'beforeHistoryChange', 'routeChangeComplete', 'routeChangeError'];
@@ -86,6 +87,20 @@ routerEvents.forEach(function (event) {
   });
 });
 
+var warnAboutRouterOnAppUpdated = (0, _utils.execOnce)(function () {
+  console.warn('Router.onAppUpdated is removed - visit https://err.sh/next.js/no-on-app-updated-hook for more information.');
+});
+
+Object.defineProperty(SingletonRouter, 'onAppUpdated', {
+  get: function get() {
+    return null;
+  },
+  set: function set() {
+    warnAboutRouterOnAppUpdated();
+    return null;
+  }
+});
+
 function throwIfNoRouter() {
   if (!SingletonRouter.router) {
     var message = 'No router instance found.\n' + 'You should only use "next/router" inside the client side of your app.\n';
@@ -121,15 +136,6 @@ var createRouter = exports.createRouter = function createRouter() {
 
 // Export the actual Router class, which is usually used inside the server
 var Router = exports.Router = _router2.default;
-
-function _notifyBuildIdMismatch(nextRoute) {
-  if (SingletonRouter.onAppUpdated) {
-    SingletonRouter.onAppUpdated(nextRoute);
-  } else {
-    console.warn('An app update detected. Loading the SSR version of "' + nextRoute + '"');
-    window.location.href = nextRoute;
-  }
-}
 
 function _rewriteUrlForNextExport(url) {
   var _url$split = url.split('#'),

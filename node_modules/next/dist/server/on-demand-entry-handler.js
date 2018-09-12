@@ -60,9 +60,11 @@ var _touch = require('touch');
 
 var _touch2 = _interopRequireDefault(_touch);
 
-var _resolve = require('./resolve');
+var _globPromise = require('glob-promise');
 
-var _resolve2 = _interopRequireDefault(_resolve);
+var _globPromise2 = _interopRequireDefault(_globPromise);
+
+var _require = require('./require');
 
 var _utils = require('./build/webpack/utils');
 
@@ -78,6 +80,7 @@ function onDemandEntryHandler(devMiddleware, compilers, _ref) {
   var dir = _ref.dir,
       dev = _ref.dev,
       reload = _ref.reload,
+      pageExtensions = _ref.pageExtensions,
       _ref$maxInactiveAge = _ref.maxInactiveAge,
       maxInactiveAge = _ref$maxInactiveAge === undefined ? 1000 * 60 : _ref$maxInactiveAge,
       _ref$pagesBufferLengt = _ref.pagesBufferLength,
@@ -96,8 +99,6 @@ function onDemandEntryHandler(devMiddleware, compilers, _ref) {
 
   compilers.forEach(function (compiler) {
     compiler.plugin('make', function (compilation, done) {
-      var _this = this;
-
       invalidator.startBuilding();
       currentBuilders.add(compiler.name);
 
@@ -107,7 +108,7 @@ function onDemandEntryHandler(devMiddleware, compilers, _ref) {
             entry = _entries$page.entry;
 
         entries[page].status = BUILDING;
-        return addEntry(compilation, _this.context, name, entry);
+        return addEntry(compilation, compiler.context, name, entry);
       });
 
       _promise2.default.all(allEntries).then(function () {
@@ -206,7 +207,7 @@ function onDemandEntryHandler(devMiddleware, compilers, _ref) {
     },
     ensurePage: function () {
       var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(page) {
-        var pagePath, pathname, _createEntry, name, files;
+        var normalizedPagePath, extensions, paths, relativePathToPage, pathname, _createEntry, name, files;
 
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
@@ -217,15 +218,40 @@ function onDemandEntryHandler(devMiddleware, compilers, _ref) {
 
               case 2:
                 page = normalizePage(page);
+                normalizedPagePath = void 0;
+                _context.prev = 4;
 
-                pagePath = (0, _path.join)(dir, 'pages', page);
-                _context.next = 6;
-                return (0, _resolve2.default)(pagePath);
+                normalizedPagePath = (0, _require.normalizePagePath)(page);
+                _context.next = 12;
+                break;
 
-              case 6:
-                pathname = _context.sent;
-                _createEntry = (0, _utils.createEntry)((0, _path.relative)(dir, pathname)), name = _createEntry.name, files = _createEntry.files;
-                _context.next = 10;
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context['catch'](4);
+
+                console.error(_context.t0);
+                throw (0, _require.pageNotFoundError)(normalizedPagePath);
+
+              case 12:
+                extensions = pageExtensions.join('|');
+                _context.next = 15;
+                return (0, _globPromise2.default)('pages/{' + normalizedPagePath + '/index,' + normalizedPagePath + '}.+(' + extensions + ')', { cwd: dir });
+
+              case 15:
+                paths = _context.sent;
+
+                if (!(paths.length === 0)) {
+                  _context.next = 18;
+                  break;
+                }
+
+                throw (0, _require.pageNotFoundError)(normalizedPagePath);
+
+              case 18:
+                relativePathToPage = paths[0];
+                pathname = (0, _path.join)(dir, relativePathToPage);
+                _createEntry = (0, _utils.createEntry)(relativePathToPage, { pageExtensions: extensions }), name = _createEntry.name, files = _createEntry.files;
+                _context.next = 23;
                 return new _promise2.default(function (resolve, reject) {
                   var entryInfo = entries[page];
 
@@ -254,12 +280,12 @@ function onDemandEntryHandler(devMiddleware, compilers, _ref) {
                   }
                 });
 
-              case 10:
+              case 23:
               case 'end':
                 return _context.stop();
             }
           }
-        }, _callee, this);
+        }, _callee, this, [[4, 8]]);
       }));
 
       function ensurePage(_x) {
@@ -269,7 +295,7 @@ function onDemandEntryHandler(devMiddleware, compilers, _ref) {
       return ensurePage;
     }(),
     middleware: function middleware() {
-      var _this2 = this;
+      var _this = this;
 
       return function (req, res, next) {
         if (stopped) {
@@ -282,7 +308,7 @@ function onDemandEntryHandler(devMiddleware, compilers, _ref) {
           // Webpack config is reloading. So, we need to wait until it's done and
           // reload user's browser.
           // So the user could connect to the new handler and webpack setup.
-          _this2.waitUntilReloaded().then(function () {
+          _this.waitUntilReloaded().then(function () {
             res.statusCode = 302;
             res.setHeader('Location', req.url);
             res.end('302');

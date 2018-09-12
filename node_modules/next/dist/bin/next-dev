@@ -79,7 +79,9 @@ srv.start(argv.port, argv.hostname).then((0, _asyncToGenerator3.default)( /*#__P
 }))).catch(function (err) {
   if (err.code === 'EADDRINUSE') {
     var errorMessage = 'Port ' + argv.port + ' is already in use.';
-    var pkgAppPath = require('pkg-up').sync('.');
+    var pkgAppPath = require('find-up').sync('package.json', {
+      cwd: dir
+    });
     var appPackage = JSON.parse((0, _fs.readFileSync)(pkgAppPath, 'utf8'));
     var nextScript = (0, _entries2.default)(appPackage.scripts).find(function (scriptLine) {
       return scriptLine[1] === 'next';

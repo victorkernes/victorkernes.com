@@ -32,6 +32,8 @@ var _path = require('path');
 
 var _fs = require('mz/fs');
 
+var _utils = require('../../utils');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var UnlinkFilePlugin = function () {
@@ -48,7 +50,7 @@ var UnlinkFilePlugin = function () {
 
       compiler.plugin('after-emit', function (compilation, callback) {
         var removed = (0, _keys2.default)(_this.prevAssets).filter(function (a) {
-          return !compilation.assets[a];
+          return _utils.IS_BUNDLED_PAGE.test(a) && !compilation.assets[a];
         });
 
         _this.prevAssets = compilation.assets;

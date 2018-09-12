@@ -4,10 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _stringify = require('babel-runtime/core-js/json/stringify');
-
-var _stringify2 = _interopRequireDefault(_stringify);
-
 var _regenerator = require('babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
@@ -20,29 +16,18 @@ var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var writeBuildStats = function () {
-  var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(dir, config) {
-    var assetHashMap, buildStatsPath;
+var writeBuildId = function () {
+  var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(dir, buildId, config) {
+    var buildIdPath;
     return _regenerator2.default.wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
-            _context3.next = 2;
-            return (0, _promise4.default)((0, _path.join)(dir, config.distDir, 'app.js'));
+            buildIdPath = (0, _path.join)(dir, config.distDir, 'BUILD_ID');
+            _context3.next = 3;
+            return _fs2.default.writeFile(buildIdPath, buildId, 'utf8');
 
-          case 2:
-            _context3.t0 = _context3.sent;
-            _context3.t1 = {
-              hash: _context3.t0
-            };
-            assetHashMap = {
-              'app.js': _context3.t1
-            };
-            buildStatsPath = (0, _path.join)(dir, config.distDir, 'build-stats.json');
-            _context3.next = 8;
-            return _fs2.default.writeFile(buildStatsPath, (0, _stringify2.default)(assetHashMap), 'utf8');
-
-          case 8:
+          case 3:
           case 'end':
             return _context3.stop();
         }
@@ -50,32 +35,8 @@ var writeBuildStats = function () {
     }, _callee3, this);
   }));
 
-  return function writeBuildStats(_x5, _x6) {
+  return function writeBuildId(_x5, _x6, _x7) {
     return _ref3.apply(this, arguments);
-  };
-}();
-
-var writeBuildId = function () {
-  var _ref4 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4(dir, buildId, config) {
-    var buildIdPath;
-    return _regenerator2.default.wrap(function _callee4$(_context4) {
-      while (1) {
-        switch (_context4.prev = _context4.next) {
-          case 0:
-            buildIdPath = (0, _path.join)(dir, config.distDir, 'BUILD_ID');
-            _context4.next = 3;
-            return _fs2.default.writeFile(buildIdPath, buildId, 'utf8');
-
-          case 3:
-          case 'end':
-            return _context4.stop();
-        }
-      }
-    }, _callee4, this);
-  }));
-
-  return function writeBuildId(_x7, _x8, _x9) {
-    return _ref4.apply(this, arguments);
   };
 }();
 
@@ -97,13 +58,11 @@ var _config = require('../config');
 
 var _config2 = _interopRequireDefault(_config);
 
+var _constants = require('../../lib/constants');
+
 var _webpack3 = require('./webpack');
 
 var _webpack4 = _interopRequireDefault(_webpack3);
-
-var _promise3 = require('md5-file/promise');
-
-var _promise4 = _interopRequireDefault(_promise3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -115,7 +74,7 @@ exports.default = function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            config = (0, _config2.default)(dir, conf);
+            config = (0, _config2.default)(_constants.PHASE_PRODUCTION_BUILD, dir, conf);
             buildId = _uuid2.default.v4();
             _context.prev = 2;
             _context.next = 5;
@@ -144,29 +103,25 @@ exports.default = function () {
 
           case 17:
             _context.next = 19;
-            return writeBuildStats(dir, config);
-
-          case 19:
-            _context.next = 21;
             return writeBuildId(dir, buildId, config);
 
-          case 21:
-            _context.next = 27;
+          case 19:
+            _context.next = 25;
             break;
 
-          case 23:
-            _context.prev = 23;
+          case 21:
+            _context.prev = 21;
             _context.t1 = _context['catch'](11);
 
             console.error('> Failed to build');
             throw _context.t1;
 
-          case 27:
+          case 25:
           case 'end':
             return _context.stop();
         }
       }
-    }, _callee, this, [[2, 7], [11, 23]]);
+    }, _callee, this, [[2, 7], [11, 21]]);
   }));
 
   function build(_x2) {

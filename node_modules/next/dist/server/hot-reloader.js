@@ -62,6 +62,10 @@ var _webpackHotMiddleware = require('webpack-hot-middleware');
 
 var _webpackHotMiddleware2 = _interopRequireDefault(_webpackHotMiddleware);
 
+var _del = require('del');
+
+var _del2 = _interopRequireDefault(_del);
+
 var _onDemandEntryHandler = require('./on-demand-entry-handler');
 
 var _onDemandEntryHandler2 = _interopRequireDefault(_onDemandEntryHandler);
@@ -73,14 +77,6 @@ var _webpack2 = _interopRequireDefault(_webpack);
 var _webpack3 = require('./build/webpack');
 
 var _webpack4 = _interopRequireDefault(_webpack3);
-
-var _clean = require('./build/clean');
-
-var _clean2 = _interopRequireDefault(_clean);
-
-var _config = require('./config');
-
-var _config2 = _interopRequireDefault(_config);
 
 var _uuid = require('uuid');
 
@@ -94,7 +90,7 @@ var HotReloader = function () {
   function HotReloader(dir) {
     var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
         quiet = _ref.quiet,
-        conf = _ref.conf;
+        config = _ref.config;
 
     (0, _classCallCheck3.default)(this, HotReloader);
 
@@ -116,7 +112,7 @@ var HotReloader = function () {
     // it should be the same value.
     this.buildId = _uuid2.default.v4();
 
-    this.config = (0, _config2.default)(dir, conf);
+    this.config = config;
   }
 
   (0, _createClass3.default)(HotReloader, [{
@@ -234,39 +230,16 @@ var HotReloader = function () {
       return run;
     }()
   }, {
-    key: 'start',
+    key: 'clean',
     value: function () {
       var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
-        var configs, compiler, buildTools;
         return _regenerator2.default.wrap(function _callee2$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                _context3.next = 2;
-                return (0, _clean2.default)(this.dir);
+                return _context3.abrupt('return', (0, _del2.default)((0, _path.join)(this.dir, this.config.distDir), { force: true }));
 
-              case 2:
-                _context3.next = 4;
-                return _promise2.default.all([(0, _webpack4.default)(this.dir, { dev: true, isServer: false, config: this.config }), (0, _webpack4.default)(this.dir, { dev: true, isServer: true, config: this.config })]);
-
-              case 4:
-                configs = _context3.sent;
-                compiler = (0, _webpack2.default)(configs);
-                _context3.next = 8;
-                return this.prepareBuildTools(compiler);
-
-              case 8:
-                buildTools = _context3.sent;
-
-                this.assignBuildTools(buildTools);
-
-                _context3.next = 12;
-                return this.waitUntilValid();
-
-              case 12:
-                this.stats = _context3.sent.stats[0];
-
-              case 13:
+              case 1:
               case 'end':
                 return _context3.stop();
             }
@@ -274,8 +247,55 @@ var HotReloader = function () {
         }, _callee2, this);
       }));
 
-      function start() {
+      function clean() {
         return _ref3.apply(this, arguments);
+      }
+
+      return clean;
+    }()
+  }, {
+    key: 'start',
+    value: function () {
+      var _ref4 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3() {
+        var configs, compiler, buildTools;
+        return _regenerator2.default.wrap(function _callee3$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return this.clean();
+
+              case 2:
+                _context4.next = 4;
+                return _promise2.default.all([(0, _webpack4.default)(this.dir, { dev: true, isServer: false, config: this.config }), (0, _webpack4.default)(this.dir, { dev: true, isServer: true, config: this.config })]);
+
+              case 4:
+                configs = _context4.sent;
+                compiler = (0, _webpack2.default)(configs);
+                _context4.next = 8;
+                return this.prepareBuildTools(compiler);
+
+              case 8:
+                buildTools = _context4.sent;
+
+                this.assignBuildTools(buildTools);
+
+                _context4.next = 12;
+                return this.waitUntilValid();
+
+              case 12:
+                this.stats = _context4.sent.stats[0];
+
+              case 13:
+              case 'end':
+                return _context4.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function start() {
+        return _ref4.apply(this, arguments);
       }
 
       return start;
@@ -283,20 +303,20 @@ var HotReloader = function () {
   }, {
     key: 'stop',
     value: function () {
-      var _ref4 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(webpackDevMiddleware) {
+      var _ref5 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4(webpackDevMiddleware) {
         var middleware;
-        return _regenerator2.default.wrap(function _callee3$(_context4) {
+        return _regenerator2.default.wrap(function _callee4$(_context5) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
                 middleware = webpackDevMiddleware || this.webpackDevMiddleware;
 
                 if (!middleware) {
-                  _context4.next = 3;
+                  _context5.next = 3;
                   break;
                 }
 
-                return _context4.abrupt('return', new _promise2.default(function (resolve, reject) {
+                return _context5.abrupt('return', new _promise2.default(function (resolve, reject) {
                   middleware.close(function (err) {
                     if (err) return reject(err);
                     resolve();
@@ -305,14 +325,14 @@ var HotReloader = function () {
 
               case 3:
               case 'end':
-                return _context4.stop();
+                return _context5.stop();
             }
           }
-        }, _callee3, this);
+        }, _callee4, this);
       }));
 
       function stop(_x4) {
-        return _ref4.apply(this, arguments);
+        return _ref5.apply(this, arguments);
       }
 
       return stop;
@@ -320,61 +340,61 @@ var HotReloader = function () {
   }, {
     key: 'reload',
     value: function () {
-      var _ref5 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4() {
+      var _ref6 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5() {
         var configs, compiler, buildTools, oldWebpackDevMiddleware;
-        return _regenerator2.default.wrap(function _callee4$(_context5) {
+        return _regenerator2.default.wrap(function _callee5$(_context6) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context6.prev = _context6.next) {
               case 0:
                 this.stats = null;
 
-                _context5.next = 3;
-                return (0, _clean2.default)(this.dir);
+                _context6.next = 3;
+                return this.clean();
 
               case 3:
-                _context5.next = 5;
+                _context6.next = 5;
                 return _promise2.default.all([(0, _webpack4.default)(this.dir, { dev: true, isServer: false, config: this.config }), (0, _webpack4.default)(this.dir, { dev: true, isServer: true, config: this.config })]);
 
               case 5:
-                configs = _context5.sent;
+                configs = _context6.sent;
                 compiler = (0, _webpack2.default)(configs);
-                _context5.next = 9;
+                _context6.next = 9;
                 return this.prepareBuildTools(compiler);
 
               case 9:
-                buildTools = _context5.sent;
-                _context5.next = 12;
+                buildTools = _context6.sent;
+                _context6.next = 12;
                 return this.waitUntilValid(buildTools.webpackDevMiddleware);
 
               case 12:
-                this.stats = _context5.sent;
+                this.stats = _context6.sent;
                 oldWebpackDevMiddleware = this.webpackDevMiddleware;
 
 
                 this.assignBuildTools(buildTools);
-                _context5.next = 17;
+                _context6.next = 17;
                 return this.stop(oldWebpackDevMiddleware);
 
               case 17:
               case 'end':
-                return _context5.stop();
+                return _context6.stop();
             }
           }
-        }, _callee4, this);
+        }, _callee5, this);
       }));
 
       function reload() {
-        return _ref5.apply(this, arguments);
+        return _ref6.apply(this, arguments);
       }
 
       return reload;
     }()
   }, {
     key: 'assignBuildTools',
-    value: function assignBuildTools(_ref6) {
-      var webpackDevMiddleware = _ref6.webpackDevMiddleware,
-          webpackHotMiddleware = _ref6.webpackHotMiddleware,
-          onDemandEntries = _ref6.onDemandEntries;
+    value: function assignBuildTools(_ref7) {
+      var webpackDevMiddleware = _ref7.webpackDevMiddleware,
+          webpackHotMiddleware = _ref7.webpackHotMiddleware,
+          onDemandEntries = _ref7.onDemandEntries;
 
       this.webpackDevMiddleware = webpackDevMiddleware;
       this.webpackHotMiddleware = webpackHotMiddleware;
@@ -384,13 +404,13 @@ var HotReloader = function () {
   }, {
     key: 'prepareBuildTools',
     value: function () {
-      var _ref7 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5(compiler) {
+      var _ref8 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6(compiler) {
         var _this2 = this;
 
         var ignored, webpackDevMiddlewareConfig, webpackDevMiddleware, webpackHotMiddleware, onDemandEntries;
-        return _regenerator2.default.wrap(function _callee5$(_context6) {
+        return _regenerator2.default.wrap(function _callee6$(_context7) {
           while (1) {
-            switch (_context6.prev = _context6.next) {
+            switch (_context7.prev = _context7.next) {
               case 0:
                 // This flushes require.cache after emitting the files. Providing 'hot reloading' of server files.
                 compiler.compilers.forEach(function (singleCompiler) {
@@ -529,12 +549,12 @@ var HotReloader = function () {
 
                     try {
                       for (var _iterator5 = (0, _getIterator3.default)(chunkHashes), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-                        var _ref8 = _step5.value;
+                        var _ref9 = _step5.value;
 
-                        var _ref9 = (0, _slicedToArray3.default)(_ref8, 2);
+                        var _ref10 = (0, _slicedToArray3.default)(_ref9, 2);
 
-                        var _n = _ref9[0];
-                        var hash = _ref9[1];
+                        var _n = _ref10[0];
+                        var hash = _ref10[1];
 
                         if (!_this2.prevChunkHashes.has(_n)) continue;
                         if (_this2.prevChunkHashes.get(_n) === hash) continue;
@@ -593,9 +613,10 @@ var HotReloader = function () {
                 onDemandEntries = (0, _onDemandEntryHandler2.default)(webpackDevMiddleware, compiler.compilers, (0, _extends3.default)({
                   dir: this.dir,
                   dev: true,
-                  reload: this.reload.bind(this)
+                  reload: this.reload.bind(this),
+                  pageExtensions: this.config.pageExtensions
                 }, this.config.onDemandEntries));
-                return _context6.abrupt('return', {
+                return _context7.abrupt('return', {
                   webpackDevMiddleware: webpackDevMiddleware,
                   webpackHotMiddleware: webpackHotMiddleware,
                   onDemandEntries: onDemandEntries
@@ -603,14 +624,14 @@ var HotReloader = function () {
 
               case 9:
               case 'end':
-                return _context6.stop();
+                return _context7.stop();
             }
           }
-        }, _callee5, this);
+        }, _callee6, this);
       }));
 
       function prepareBuildTools(_x5) {
-        return _ref7.apply(this, arguments);
+        return _ref8.apply(this, arguments);
       }
 
       return prepareBuildTools;
@@ -626,26 +647,26 @@ var HotReloader = function () {
   }, {
     key: 'getCompilationErrors',
     value: function () {
-      var _ref10 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6() {
+      var _ref11 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7() {
         var _stats$compilation, compiler, errors, _iteratorNormalCompletion6, _didIteratorError6, _iteratorError6, _iterator6, _step6, err, _iteratorNormalCompletion7, _didIteratorError7, _iteratorError7, _iterator7, _step7, r, _iteratorNormalCompletion8, _didIteratorError8, _iteratorError8, _iterator8, _step8, c, path, _errors;
 
-        return _regenerator2.default.wrap(function _callee6$(_context7) {
+        return _regenerator2.default.wrap(function _callee7$(_context8) {
           while (1) {
-            switch (_context7.prev = _context7.next) {
+            switch (_context8.prev = _context8.next) {
               case 0:
-                _context7.next = 2;
+                _context8.next = 2;
                 return this.onDemandEntries.waitUntilReloaded();
 
               case 2:
                 if (this.compilationErrors) {
-                  _context7.next = 73;
+                  _context8.next = 73;
                   break;
                 }
 
                 this.compilationErrors = new _map2.default();
 
                 if (!this.stats.hasErrors()) {
-                  _context7.next = 73;
+                  _context8.next = 73;
                   break;
                 }
 
@@ -653,12 +674,12 @@ var HotReloader = function () {
                 _iteratorNormalCompletion6 = true;
                 _didIteratorError6 = false;
                 _iteratorError6 = undefined;
-                _context7.prev = 9;
+                _context8.prev = 9;
                 _iterator6 = (0, _getIterator3.default)(errors);
 
               case 11:
                 if (_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done) {
-                  _context7.next = 59;
+                  _context8.next = 59;
                   break;
                 }
 
@@ -666,12 +687,12 @@ var HotReloader = function () {
                 _iteratorNormalCompletion7 = true;
                 _didIteratorError7 = false;
                 _iteratorError7 = undefined;
-                _context7.prev = 16;
+                _context8.prev = 16;
                 _iterator7 = (0, _getIterator3.default)(err.module.reasons);
 
               case 18:
                 if (_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done) {
-                  _context7.next = 42;
+                  _context8.next = 42;
                   break;
                 }
 
@@ -679,7 +700,7 @@ var HotReloader = function () {
                 _iteratorNormalCompletion8 = true;
                 _didIteratorError8 = false;
                 _iteratorError8 = undefined;
-                _context7.prev = 23;
+                _context8.prev = 23;
 
                 for (_iterator8 = (0, _getIterator3.default)(r.module.chunks); !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
                   c = _step8.value;
@@ -690,130 +711,130 @@ var HotReloader = function () {
 
                   this.compilationErrors.set(path, _errors.concat([err]));
                 }
-                _context7.next = 31;
+                _context8.next = 31;
                 break;
 
               case 27:
-                _context7.prev = 27;
-                _context7.t0 = _context7['catch'](23);
+                _context8.prev = 27;
+                _context8.t0 = _context8['catch'](23);
                 _didIteratorError8 = true;
-                _iteratorError8 = _context7.t0;
+                _iteratorError8 = _context8.t0;
 
               case 31:
-                _context7.prev = 31;
-                _context7.prev = 32;
+                _context8.prev = 31;
+                _context8.prev = 32;
 
                 if (!_iteratorNormalCompletion8 && _iterator8.return) {
                   _iterator8.return();
                 }
 
               case 34:
-                _context7.prev = 34;
+                _context8.prev = 34;
 
                 if (!_didIteratorError8) {
-                  _context7.next = 37;
+                  _context8.next = 37;
                   break;
                 }
 
                 throw _iteratorError8;
 
               case 37:
-                return _context7.finish(34);
+                return _context8.finish(34);
 
               case 38:
-                return _context7.finish(31);
+                return _context8.finish(31);
 
               case 39:
                 _iteratorNormalCompletion7 = true;
-                _context7.next = 18;
+                _context8.next = 18;
                 break;
 
               case 42:
-                _context7.next = 48;
+                _context8.next = 48;
                 break;
 
               case 44:
-                _context7.prev = 44;
-                _context7.t1 = _context7['catch'](16);
+                _context8.prev = 44;
+                _context8.t1 = _context8['catch'](16);
                 _didIteratorError7 = true;
-                _iteratorError7 = _context7.t1;
+                _iteratorError7 = _context8.t1;
 
               case 48:
-                _context7.prev = 48;
-                _context7.prev = 49;
+                _context8.prev = 48;
+                _context8.prev = 49;
 
                 if (!_iteratorNormalCompletion7 && _iterator7.return) {
                   _iterator7.return();
                 }
 
               case 51:
-                _context7.prev = 51;
+                _context8.prev = 51;
 
                 if (!_didIteratorError7) {
-                  _context7.next = 54;
+                  _context8.next = 54;
                   break;
                 }
 
                 throw _iteratorError7;
 
               case 54:
-                return _context7.finish(51);
+                return _context8.finish(51);
 
               case 55:
-                return _context7.finish(48);
+                return _context8.finish(48);
 
               case 56:
                 _iteratorNormalCompletion6 = true;
-                _context7.next = 11;
+                _context8.next = 11;
                 break;
 
               case 59:
-                _context7.next = 65;
+                _context8.next = 65;
                 break;
 
               case 61:
-                _context7.prev = 61;
-                _context7.t2 = _context7['catch'](9);
+                _context8.prev = 61;
+                _context8.t2 = _context8['catch'](9);
                 _didIteratorError6 = true;
-                _iteratorError6 = _context7.t2;
+                _iteratorError6 = _context8.t2;
 
               case 65:
-                _context7.prev = 65;
-                _context7.prev = 66;
+                _context8.prev = 65;
+                _context8.prev = 66;
 
                 if (!_iteratorNormalCompletion6 && _iterator6.return) {
                   _iterator6.return();
                 }
 
               case 68:
-                _context7.prev = 68;
+                _context8.prev = 68;
 
                 if (!_didIteratorError6) {
-                  _context7.next = 71;
+                  _context8.next = 71;
                   break;
                 }
 
                 throw _iteratorError6;
 
               case 71:
-                return _context7.finish(68);
+                return _context8.finish(68);
 
               case 72:
-                return _context7.finish(65);
+                return _context8.finish(65);
 
               case 73:
-                return _context7.abrupt('return', this.compilationErrors);
+                return _context8.abrupt('return', this.compilationErrors);
 
               case 74:
               case 'end':
-                return _context7.stop();
+                return _context8.stop();
             }
           }
-        }, _callee6, this, [[9, 61, 65, 73], [16, 44, 48, 56], [23, 27, 31, 39], [32,, 34, 38], [49,, 51, 55], [66,, 68, 72]]);
+        }, _callee7, this, [[9, 61, 65, 73], [16, 44, 48, 56], [23, 27, 31, 39], [32,, 34, 38], [49,, 51, 55], [66,, 68, 72]]);
       }));
 
       function getCompilationErrors() {
-        return _ref10.apply(this, arguments);
+        return _ref11.apply(this, arguments);
       }
 
       return getCompilationErrors;
@@ -830,24 +851,24 @@ var HotReloader = function () {
   }, {
     key: 'ensurePage',
     value: function () {
-      var _ref11 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7(page) {
-        return _regenerator2.default.wrap(function _callee7$(_context8) {
+      var _ref12 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee8(page) {
+        return _regenerator2.default.wrap(function _callee8$(_context9) {
           while (1) {
-            switch (_context8.prev = _context8.next) {
+            switch (_context9.prev = _context9.next) {
               case 0:
-                _context8.next = 2;
+                _context9.next = 2;
                 return this.onDemandEntries.ensurePage(page);
 
               case 2:
               case 'end':
-                return _context8.stop();
+                return _context9.stop();
             }
           }
-        }, _callee7, this);
+        }, _callee8, this);
       }));
 
       function ensurePage(_x6) {
-        return _ref11.apply(this, arguments);
+        return _ref12.apply(this, arguments);
       }
 
       return ensurePage;

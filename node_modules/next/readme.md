@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/zeit/next.js.svg?branch=master)](https://travis-ci.org/zeit/next.js)
 [![Build status](https://ci.appveyor.com/api/projects/status/gqp5hs71l3ebtx1r/branch/master?svg=true)](https://ci.appveyor.com/project/arunoda/next-js/branch/master)
 [![Coverage Status](https://coveralls.io/repos/zeit/next.js/badge.svg?branch=master)](https://coveralls.io/r/zeit/next.js?branch=master)
-[![Slack Channel](http://zeit-slackin.now.sh/badge.svg)](https://zeit.chat)
+[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/next-js)
 
 Next.js is a minimalistic framework for server-rendered React applications.
 
@@ -44,6 +44,7 @@ Next.js is a minimalistic framework for server-rendered React applications.
   - [CDN support with Asset Prefix](#cdn-support-with-asset-prefix)
 - [Production deployment](#production-deployment)
 - [Static HTML export](#static-html-export)
+- [Multi Zones](#multi-zones)
 - [Recipes](#recipes)
 - [FAQ](#faq)
 - [Contributing](#contributing)
@@ -61,7 +62,7 @@ Install it:
 npm install --save next react react-dom
 ```
 
-> Next.js 4 only supports [React 16](https://reactjs.org/blog/2017/09/26/react-v16.0.html).<br/>
+> Next.js only supports [React 16](https://reactjs.org/blog/2017/09/26/react-v16.0.html).<br/>
 > We had to drop React 15 support due to the way React 16 works and how we use it.
 
 and add a script to your package.json like this:
@@ -168,16 +169,16 @@ To use more sophisticated CSS-in-JS solutions, you typically have to implement s
 
 To support importing `.css` `.scss` or `.less` files you can use these modules, which configure sensible defaults for server rendered applications.
 
-- ![@zeit/next-css](https://github.com/zeit/next-plugins/tree/master/packages/next-css)
-- ![@zeit/next-sass](https://github.com/zeit/next-plugins/tree/master/packages/next-sass)
-- ![@zeit/next-less](https://github.com/zeit/next-plugins/tree/master/packages/next-less)
+- [@zeit/next-css](https://github.com/zeit/next-plugins/tree/master/packages/next-css)
+- [@zeit/next-sass](https://github.com/zeit/next-plugins/tree/master/packages/next-sass)
+- [@zeit/next-less](https://github.com/zeit/next-plugins/tree/master/packages/next-less)
 
 ### Static file serving (e.g.: images)
 
 Create a folder called `static` in your project root directory. From your code you can then reference those files with `/static/` URLs:
 
 ```jsx
-export default () => <img src="/static/my-image.png" />
+export default () => <img src="/static/my-image.png" alt="my image" />
 ```
 
 ### Populating `<head>`
@@ -404,7 +405,7 @@ export default () =>
   <div>
     Click{' '}
     <Link href="/about">
-      <img src="/static/image.png" />
+      <img src="/static/image.png" alt="image" />
     </Link>
   </div>
 ```
@@ -425,6 +426,15 @@ export default ({ href, name }) =>
       {name}
     </Unexpected_A>
   </Link>
+```
+
+##### Disabling the scroll changes to top on page
+
+The default behaviour of `<Link>` is to scroll to the top of the page. When there is a hash defined it will scroll to the specific id, just like a normal `<a>` tag. To prevent scrolling to the top / hash `scroll={false}` can be added to `<Link>`:
+
+```jsx
+<Link scroll={false} href="/?counter=10"><a>Disables scrolling</a></Link>
+<Link href="/?counter=10"><a>Changes with scrolling to top</a></Link>
 ```
 
 #### Imperatively
@@ -490,7 +500,6 @@ Here's a list of supported events:
 - `onRouteChangeComplete(url)` - Fires when a route changed completely
 - `onRouteChangeError(err, url)` - Fires when there's an error when changing routes
 - `onBeforeHistoryChange(url)` - Fires just before changing the browser's history
-- `onAppUpdated(nextRoute)` - Fires when switching pages and there's a new version of the app
 
 > Here `url` is the URL shown in the browser. If you call `Router.push(url, as)` (or similar), then the value of `url` will be `as`.
 
@@ -515,17 +524,6 @@ Router.onRouteChangeError = (err, url) => {
   if (err.cancelled) {
     console.log(`Route to ${url} was cancelled!`)
   }
-}
-```
-
-If you change a route while in between a new deployment, we can't navigate the app via client side. We need to do a full browser navigation. We do it automatically for you.
-
-But you can customize that via `Route.onAppUpdated` event like this:
-
-```js
-Router.onAppUpdated = nextUrl => {
-  // persist the local state
-  location.href = nextUrl
 }
 ```
 
@@ -562,9 +560,9 @@ componentWillReceiveProps(nextProps) {
 
 > NOTES:
 >
-> Shallow routing works **only** for same page URL changes. For an example, let's assume we've another page called `about`, and you run this:
+> Shallow routing works **only** for same page URL changes. For an example, let's assume we have another page called `about`, and you run this:
 > ```js
-> Router.push('/about?counter=10', '/about?counter=10', { shallow: true })
+> Router.push('/?counter=10', '/about?counter=10', { shallow: true })
 > ```
 > Since that's a new page, it'll unload the current page, load the new one and call `getInitialProps` even though we asked to do shallow routing.
 
@@ -607,7 +605,7 @@ The above `router` object comes with an API similar to [`next/router`](#imperati
 
 ### Prefetching Pages
 
-(This is a production only feature)
+⚠️ This is a production only feature ⚠️
 
 <p><details>
   <summary><b>Examples</b></summary>
@@ -902,6 +900,9 @@ export default () => <HelloBundle title="Dynamic Bundle" />
 Pages in `Next.js` skip the definition of the surrounding document's markup. For example, you never include `<html>`, `<body>`, etc. To override that default behavior, you must create a file at `./pages/_document.js`, where you can extend the `Document` class:
 
 ```jsx
+// _document is only rendered on the server side and not on the client side
+// Event handlers like onClick can't be added to this file
+
 // ./pages/_document.js
 import Document, { Head, Main, NextScript } from 'next/document'
 import flush from 'styled-jsx/server'
@@ -1008,6 +1009,36 @@ module.exports = {
 }
 ```
 
+Or use a function:
+
+```js
+module.exports = (phase, {defaultConfig}){
+  //
+  // https://github.com/zeit/
+  return {
+    /* config options here */
+  }
+}
+```
+
+`phase` is the current context in which the configuration is loaded. You can see all phases here: [constants](./lib/constants.js)
+Phases can be imported from `next/constants`:
+
+```js
+const {PHASE_DEVELOPMENT_SERVER} = require('next/constants')
+module.exports = (phase, {defaultConfig}){
+  if(phase === PHASE_DEVELOPMENT_SERVER) {
+    return {
+      /* development only config options here */
+    }
+  }
+
+  return {
+    /* config options for all phases except development here */
+  }
+}
+```
+
 #### Setting a custom build directory
 
 You can specify a name to use for a custom build directory. For example, the following config will create a `build` folder instead of a `.next` folder. If no configuration is specified then next will create a `.next` folder.
@@ -1016,6 +1047,17 @@ You can specify a name to use for a custom build directory. For example, the fol
 // next.config.js
 module.exports = {
   distDir: 'build'
+}
+```
+
+#### Disabling etag generation
+
+You can disable etag generation for HTML pages depending on your cache strategy. If no configuration is specified then Next will generate etags for every page.
+
+```js
+// next.config.js
+module.exports = {
+  generateEtags: false
 }
 ```
 
@@ -1035,6 +1077,17 @@ module.exports = {
 ```
 
 This is development-only feature. If you want to cache SSR pages in production, please see [SSR-caching](https://github.com/zeit/next.js/tree/canary/examples/ssr-caching) example.
+
+#### Configuring extensions looked for when resolving pages in `pages`
+
+Aimed at modules like [`@zeit/next-typescript`](https://github.com/zeit/next-plugins/tree/master/packages/next-typescript), that add support for pages ending in `.ts`. `pageExtensions` allows you to configure the extensions looked for in the `pages` directory when resolving pages.
+
+```js
+// next.config.js
+module.exports = {
+  pageExtensions: ['jsx', 'js']
+}
+```
 
 ### Customizing webpack config
 
@@ -1076,6 +1129,21 @@ Some commonly asked for features are available as modules:
 
 *Warning: The `webpack` function is executed twice, once for the server and once for the client. This allows you to distinguish between client and server configuration using the `isServer` property*
 
+Multiple configurations can be combined together with function composition. For example:
+
+```js
+const withTypescript = require('@zeit/next-typescript')
+const withSass = require('@zeit/next-sass')
+
+module.exports = withTypescript(withSass({
+  webpack(config, options) {
+    // Further custom configuration here
+    return config
+  }
+}))
+```
+
+
 ### Customizing babel config
 
 <p><details>
@@ -1093,8 +1161,38 @@ Here's an example `.babelrc` file:
 
 ```json
 {
-  "presets": ["next/babel", "env"]
+  "presets": ["next/babel"],
+  "plugins": []
 }
+```
+
+#### Exposing configuration to the server / client side
+
+The `config` key allows for exposing runtime configuration in your app. All keys are server only by default. To expose a configuration to both the server and client side you can use the `public` key.
+
+```js
+// next.config.js
+module.exports = {
+  serverRuntimeConfig: { // Will only be available on the server side
+    mySecret: 'secret'
+  },
+  publicRuntimeConfig: { // Will be available on both server and client
+    staticFolder: '/static'
+  }
+}
+```
+
+```js
+// pages/index.js
+import getConfig from 'next/config'
+const {serverRuntimeConfig, publicRuntimeConfig} = getConfig()
+
+console.log(serverRuntimeConfig.mySecret) // Will only be available on the server side
+console.log(publicRuntimeConfig.staticFolder) // Will be available on both server and client
+
+export default () => <div>
+  <img src={`${publicRuntimeConfig.staticFolder}/logo.png`} alt="logo" />
+</div>
 ```
 
 ### CDN support with Asset Prefix
@@ -1220,10 +1318,53 @@ So, you could only use `pathname`, `query` and `asPath` fields of the `context` 
 
 > Basically, you won't be able to render HTML content dynamically as we pre-build HTML files. If you need that, you need run your app with `next start`.
 
+## Multi Zones
+
+<p><details>
+  <summary><b>Examples</b></summary>
+  <ul><li><a href="./examples/with-zones">With Zones</a></li></ul>
+</details></p>
+
+A zone is a single deployment of a Next.js app. Just like that, you can have multiple zones. Then you can merge them as a single app.
+
+For an example, you can have two zones like this:
+
+* https://docs.my-app.com for serving `/docs/**`
+* https://ui.my-app.com for serving all other pages
+
+With multi zones support, you can merge both these apps into a single one. Which allows your customers to browse it using a single URL. But you can develop and deploy both apps independently.
+
+> This is exactly the same concept as microservices, but for frontend apps.
+
+### How to define a zone
+
+There are no special zones related APIs. You only need to do following things:
+
+* Make sure to keep only the pages you need in your app. (For an example, https://ui.my-app.com should not contain pages for `/docs/**`)
+* Make sure your app has an [assetPrefix](https://github.com/zeit/next.js#cdn-support-with-asset-prefix). (You can also define the assetPrefix [dynamically](https://github.com/zeit/next.js#dynamic-assetprefix).)
+
+### How to merge them
+
+You can merge zones using any HTTP proxy.
+
+You can use [micro proxy](https://github.com/zeit/micro-proxy) as your local proxy server. It allows you to easily define routing rules like below:
+
+```json
+{
+  "rules": [
+    {"pathname": "/docs**", "method":["GET", "POST", "OPTIONS"], "dest": "https://docs.my-app.com"},
+    {"pathname": "/**", "dest": "https://ui.my-app.com"}
+  ]
+}
+```
+
+For the production deployment, you can use the [path alias](https://zeit.co/docs/features/path-aliases) feature if you are using [ZEIT now](https://zeit.co/now). Otherwise, you can configure your existing proxy server to route HTML pages using a set of rules as show above.
+
 ## Recipes
 
 - [Setting up 301 redirects](https://www.raygesualdo.com/posts/301-redirects-with-nextjs/)
 - [Dealing with SSR and server only modules](https://arunoda.me/blog/ssr-and-server-only-modules)
+- [Building with React-Material-UI-Next-Express-Mongoose-Mongodb](https://github.com/builderbook/builderbook)
 
 ## FAQ
 

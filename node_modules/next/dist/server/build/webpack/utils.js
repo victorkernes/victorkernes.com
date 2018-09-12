@@ -20,18 +20,19 @@ var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 var getPages = exports.getPages = function () {
   var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(dir, _ref) {
     var dev = _ref.dev,
-        isServer = _ref.isServer;
+        isServer = _ref.isServer,
+        pageExtensions = _ref.pageExtensions;
     var pageFiles;
     return _regenerator2.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return getPagePaths(dir, { dev: dev, isServer: isServer });
+            return getPagePaths(dir, { dev: dev, isServer: isServer, pageExtensions: pageExtensions });
 
           case 2:
             pageFiles = _context.sent;
-            return _context.abrupt('return', getPageEntries(pageFiles, { isServer: isServer }));
+            return _context.abrupt('return', getPageEntries(pageFiles, { isServer: isServer, pageExtensions: pageExtensions }));
 
           case 4:
           case 'end':
@@ -49,7 +50,8 @@ var getPages = exports.getPages = function () {
 var getPagePaths = function () {
   var _ref4 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(dir, _ref3) {
     var dev = _ref3.dev,
-        isServer = _ref3.isServer;
+        isServer = _ref3.isServer,
+        pageExtensions = _ref3.pageExtensions;
     var pages;
     return _regenerator2.default.wrap(function _callee2$(_context2) {
       while (1) {
@@ -63,7 +65,7 @@ var getPagePaths = function () {
             }
 
             _context2.next = 4;
-            return (0, _globPromise2.default)(isServer ? 'pages/+(_document|_error).+(js|jsx|ts|tsx)' : 'pages/_error.+(js|jsx|ts|tsx)', { cwd: dir });
+            return (0, _globPromise2.default)(isServer ? 'pages/+(_document|_error).+(' + pageExtensions + ')' : 'pages/_error.+(' + pageExtensions + ')', { cwd: dir });
 
           case 4:
             pages = _context2.sent;
@@ -72,7 +74,7 @@ var getPagePaths = function () {
 
           case 7:
             _context2.next = 9;
-            return (0, _globPromise2.default)(isServer ? 'pages/**/*.+(js|jsx|ts|tsx)' : 'pages/**/!(_document)*.+(js|jsx|ts|tsx)', { cwd: dir });
+            return (0, _globPromise2.default)(isServer ? 'pages/**/*.+(' + pageExtensions + ')' : 'pages/**/!(_document)*.+(' + pageExtensions + ')', { cwd: dir });
 
           case 9:
             pages = _context2.sent;
@@ -111,7 +113,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var nextPagesDir = _path2.default.join(__dirname, '..', '..', '..', 'pages');
 
-function createEntry(filePath, name) {
+function createEntry(filePath) {
+  var _ref5 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      name = _ref5.name,
+      pageExtensions = _ref5.pageExtensions;
+
   var parsedPath = _path2.default.parse(filePath);
   var entryName = name || filePath;
 
@@ -122,7 +128,9 @@ function createEntry(filePath, name) {
   }
 
   // Makes sure supported extensions are stripped off. The outputted file should always be `.js`
-  entryName = entryName.replace(/\.+(jsx|tsx|ts)/, '.js');
+  if (pageExtensions) {
+    entryName = entryName.replace(new RegExp('\\.+(' + pageExtensions + ')$'), '.js');
+  }
 
   return {
     name: _path2.default.join('bundles', entryName),
@@ -131,8 +139,11 @@ function createEntry(filePath, name) {
 }
 
 // Convert page paths into entries
-function getPageEntries(pagePaths, _ref5) {
-  var isServer = _ref5.isServer;
+function getPageEntries(pagePaths) {
+  var _ref6 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref6$isServer = _ref6.isServer,
+      isServer = _ref6$isServer === undefined ? false : _ref6$isServer,
+      pageExtensions = _ref6.pageExtensions;
 
   var entries = {};
 
@@ -144,7 +155,7 @@ function getPageEntries(pagePaths, _ref5) {
     for (var _iterator = (0, _getIterator3.default)(pagePaths), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
       var filePath = _step.value;
 
-      var entry = createEntry(filePath);
+      var entry = createEntry(filePath, { pageExtensions: pageExtensions });
       entries[entry.name] = entry.files;
     }
   } catch (err) {
@@ -163,14 +174,14 @@ function getPageEntries(pagePaths, _ref5) {
   }
 
   var errorPagePath = _path2.default.join(nextPagesDir, '_error.js');
-  var errorPageEntry = createEntry(errorPagePath, 'pages/_error.js'); // default error.js
+  var errorPageEntry = createEntry(errorPagePath, { name: 'pages/_error.js' }); // default error.js
   if (!entries[errorPageEntry.name]) {
     entries[errorPageEntry.name] = errorPageEntry.files;
   }
 
   if (isServer) {
     var documentPagePath = _path2.default.join(nextPagesDir, '_document.js');
-    var documentPageEntry = createEntry(documentPagePath, 'pages/_document.js');
+    var documentPageEntry = createEntry(documentPagePath, { name: 'pages/_document.js' }); // default _document.js
     if (!entries[documentPageEntry.name]) {
       entries[documentPageEntry.name] = documentPageEntry.files;
     }
