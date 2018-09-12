@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 const Footer = () => (
   <div>
     <footer>
@@ -7,11 +5,18 @@ const Footer = () => (
     </footer>
     <style jsx>{`
         footer {
-          font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-          font-weight: 400;
-          font-size: 16px;
-          border-top: 2px solid #4F5966;
-          color: #4F5966;
+          font-size: 18px;
+          color: #fff;
+          margin: 0 auto;
+          width: 100%;
+          text-align: center;
+          padding-top: 180px;
+          padding-bottom: 32px;
+        }
+        @media (max-width: 720px) {
+          footer {
+            padding-top: 90px;
+          }
         }
     `}</style>
   </div>
