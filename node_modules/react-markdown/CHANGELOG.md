@@ -2,6 +2,103 @@
 
 All notable changes will be documented in this file.
 
+## 4.0.4 - 2018-11-30
+
+### Changed
+
+* Upgrade dependencies (Espen Hovlandsdal)
+
+## 4.0.3 - 2018-10-11
+
+### Fixes
+
+* Output paragraph element for last item in loose list (Jeremy Moseley)
+
+## 4.0.2 - 2018-10-05
+
+### Fixes
+
+* Fix text rendering in React versions lower than or equal to 15 (Espen Hovlandsdal)
+
+## 4.0.1 - 2018-10-03
+
+### Fixes
+
+* [TypeScript] Fix TypeScript index signature for renderers (Linus Unnebäck)
+
+## 4.0.0 - 2018-10-03
+
+### BREAKING
+
+* `text` is now a first-class node + renderer - if you are using `allowedNodes`, it needs to be included in this list. Since it is now a React component, it will be passed an object of props instead of the old approach where a string was passed. `children` will contain the actual text string.
+* On React >= 16.2, if no `className` prop is provided, a fragment will be used instead of a div. To always render a div, pass `'div'` as the `root` renderer.
+* On React >= 16.2, escaped HTML will no longer be rendered with div/span containers
+* The UMD bundle now exports the component as `window.ReactMarkdown` instead of `window.reactMarkdown`
+
+### Added
+
+* HTML parser plugin for full HTML compatibility (Espen Hovlandsdal)
+
+### Fixes
+
+* URI transformer allows uppercase http/https URLs (Liam Kennedy)
+* [TypeScript] Strongly type the keys of `renderers` (Linus Unnebäck)
+
+## 3.6.0 - 2018-09-05
+
+### Added
+
+* Add support for passing index info to renderers (Beau Roberts)
+
+## 3.5.0 - 2018-09-03
+
+### Added
+
+* Allow specifying `target` attribute for links (Marshall Smith)
+
+## 3.4.1 - 2018-07-25
+
+### Fixes
+
+* Bump dependency for mdast-add-list-metadata as it was using ES6 features (Espen Hovlandsdal)
+
+## 3.4.0 - 2018-07-25
+
+### Added
+
+* Add more metadata props to list and listItem (André Staltz)
+  - list: `depth`
+  - listItem: `ordered`, `index`
+
+### Fixes
+
+* Make `source` property optional in typescript definition (gRoberts84)
+
+## 3.3.4 - 2018-06-19
+
+### Fixes
+
+* Fix bug where rendering empty link references (`[][]`) would fail (Dennis S)
+
+## 3.3.3 - 2018-06-14
+
+### Fixes
+
+* Fix bug where unwrapping certain disallowed nodes would fail (Petr Gazarov)
+
+## 3.3.2 - 2018-05-07
+
+### Changes
+
+* Add `rawSourcePos` property for passing structured source position info to renderers (Espen Hovlandsdal)
+
+## 3.3.1 - 2018-05-07
+
+### Changes
+
+* Pass properties of unknown nodes directly to renderer (Jesse Pinho)
+* Update TypeScript definition and prop types (ClassicDarkChocolate)
+
 ## 3.3.0 - 2018-03-06
 
 ### Added

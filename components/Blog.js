@@ -1,5 +1,7 @@
-const Blog = () => (
-  <div>
+class Blog extends React.Component {
+ render() {
+   return(
+   <div>
     <section>
       <header>
         <h2>Blog</h2>
@@ -15,32 +17,27 @@ const Blog = () => (
     * {
       padding: 0;
     }
+    div {
+      width: 100%;
+      background: #fff;
+      border-radius: 4px;
+    }
     section {
-      max-width: 308px;
-      flex-direction: column;
+      padding: 8rem;
     }
     h2 {
-        font-size: 40px;
-        font-weight: 800;
-        color: #fff;
-      }
+      font-size: 40px;
+      font-weight: 800;
+      color: black;
+    }
     p {
       font-size: 22px;
       font-weight: 300;
-      color: #c3c3c3;
+      color: black;
       line-height: 34px;
     }
-    @media (max-width: 720px) {
-      h2 {
-        font-size: 32px;
-      }
-      p {
-        font-size: 18px;
-        line-height: 28px;
-      }
-    }
     `}</style>
-  </div>
-);
-
+  </div>)
+ }
+}
 export default Blog;

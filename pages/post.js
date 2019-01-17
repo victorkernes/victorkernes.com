@@ -1,6 +1,5 @@
 import Layout from '../components/Layout.js';
 import Markdown from 'react-markdown';
-// import fetch from 'isomorphic-unfetch'
 
 export default (props) => (
   <Layout>

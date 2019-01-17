@@ -1,28 +1,23 @@
-import StarSVG from '../images/star.svg';
-import MastadonSVG from '../images/mastadon.svg';
-import InstagramSVG from '../images/instagram.svg';
-import RedditSVG from '../images/reddit.svg';
-
 const Socials = () => (
   <div>
     <section className="socials-nav">
     <div className="mobile-bonus">
-      <StarSVG/>
+      <img src="/static/star.svg"/>
       <p>
         Bonus points for looking on mobile.
       </p>
     </div>
     <ul>
       <li>
-        <MastadonSVG/>
+        <img src="/static/mastadon.svg"/>
         <a href="https://mastodon.design/@victorkernes" target="_blank">Mastadon</a>
       </li>
       <li>
-        <InstagramSVG/>
+        <img src="/static/instagram.svg"/>
         <a href="https://www.instagram.com/victorkernes/" target="_blank">Instagram</a>
       </li>
       <li>
-        <RedditSVG/>
+        <img src="/static/reddit.svg"/>
         <a href="https://www.reddit.com/user/victorkernes" target="_blank">Reddit</a>
       </li>
     </ul>
