@@ -14,11 +14,7 @@ const About = () => (
         Long
       </h3>
       <p>
-        I have a degree in Marketing from The Art Institute. I spent two years in San Francisco studying and working full time. I am a designer first, developer second; I am experienced with CSS, HTML and a bit of JS. I often code my own designs (and design in code). I am most comfortable working alongside a development team.
-      </p>
-      <h3>Career</h3>
-      <p>
-        I’m a designer that codes, writes, and podcasts. I work at Virta Health in San Francisco.
+        I have a degree in Marketing from The Art Institute. I spent two years in San Francisco studying and working full time. I am a designer first, developer second; I am experienced with CSS, HTML and a bit of JS. I often code my own designs (and design in code).
       </p>
       <p>
         Attended a 10–week career accelerator focused on creating advanced interactive web experiences with Javascript. <a href="https://generalassemb.ly/education/javascript-development/san-francisco">General Assembly</a>
@@ -26,12 +22,8 @@ const About = () => (
       <p>
         When I’m not working, I tend to play lots of basketball indoors.
       </p>
-      <h3>Video Games</h3>
       <p>
-        Sometimes I’ll play video games but I’m horrible. Let me know if you want to carry me to the end in a game of Fortnite.
-      </p>
-      <p>
-        Want to get in touch? Let’s get tea.
+        Want to get in touch? I stopped drinking caffeine but happy to meet you up at a coffee shop.
       </p>
     </section>
     <style jsx>{`
