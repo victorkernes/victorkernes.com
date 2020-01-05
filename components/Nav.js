@@ -1,61 +1,92 @@
-import NotesSVG from '../images/notes.svg';
-import ReadSVG from '../images/read.svg';
-import EmailSVG from '../images/email.svg';
-import FigmaSVG from '../images/figma.svg';
-import VenmoSVG from '../images/venmo.svg';
+import NavLink from './NavLink'
 
 const Nav = () => (
-  <div>
-    <section>
-        <nav>
-            <NotesSVG/>
-            <ReadSVG/>
-            <EmailSVG/>
-            <FigmaSVG/>
-            <VenmoSVG/>
-            <a href="" className="text">Blog</a>
-            <a href="" className="text">Books</a>
-            <a href="" className="text">Email</a>
-            <a href="" className="text">Projects</a>
-            <a href="" className="text">Donate</a>
-        </nav>
-    </section>
+  <div className="container">
+    <nav>
+      <div className="logo-container">
+        <a className="logo" href="/" alt="home">
+          <img className="nav-logo" src="/static/@.png" />
+          <span className="nav-name">victorkernes</span>
+        </a>
+      </div>
+      <div>
+        <ul className="nav-items">
+          <li>
+              <NavLink href="/work" alt="work">
+                <span className="nav-item">Work</span>
+              </NavLink>
+          </li>
+          <li>
+              <NavLink href="/blog" alt="blog">
+                <span className="nav-item">Blog</span>
+              </NavLink>
+          </li>
+        </ul>
+      </div>
+    </nav>
     <style jsx>{`
-    section {
-        position: fixed;
-        bottom: 0;
-        z-index: 100;
-        width: 100%;
-        margin-bottom: 32px;
-    }
-    nav {
-        max-width: 464px;
-        margin: 0 auto;
-        text-align: center;
-        display: grid;
-        grid-template-columns: repeat(5, auto);
+      nav {
+        display: inline-flex;
         align-items: center;
-        justify-items: center;
-        background-color: #1d1f21;
-        padding: 16px 0;
-        box-shadow: inset 0px 2px 16px rgba(255,255,255,0.1);
+        justify-content: space-between;
+        width: 100%;
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-bottom: 56px;
+      }
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        line-height: 24px;
+        padding: 8px 8px;
+        margin: 8px -8px;
         border-radius: 8px;
-    }
-    .text {
-        padding-top: 8px;
-    }
-    @media (max-width: 720px) {
-        nav {
-            max-width: 400px;
-        }
-        h2 {
-            font-size: 32px;
-        }
-        p {
-            font-size: 18px;
-            line-height: 28px;
-        }
-    }
+        transition: all 0.1s ease-in-out;
+      }
+      .logo:hover {
+        background: rgba(255, 255, 255, 0.1);
+        text-decoration: none;
+        outline: 0;
+        transition: all 0.2s ease-in-out;
+      }
+      .logo:active {
+        outline: 0;
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+        text-decoration: none;
+      }
+      .nav-logo {
+        height: 24px;
+        width: 24px;
+      }
+      .nav-name {
+        font-size: 16px;
+        font-weight: 600;
+        padding-left: 8px;
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+      }
+      .nav-items {
+        display: inline-flex;
+        list-style: none;
+      }
+      li {
+        padding-left: 24px;
+      }
+      .nav-item {
+        font-size: 16px;
+        font-weight: 600;
+        padding-bottom: 8px;
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+      }
+      .nav-item:hover {
+        color: #8c7df7;
+        border-bottom: 2px solid #8c7df7;
+      }
+      a {
+        text-decoration: none;
+        cursor: pointer;
+      }
     `}</style>
   </div>
 );

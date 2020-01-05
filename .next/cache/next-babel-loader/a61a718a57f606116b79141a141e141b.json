@@ -1,0 +1,1 @@
+{"ast":null,"code":"import React from \"react\";\nvar __jsx = React.createElement;\nimport NewSocialNetwork from '../../components/NewSocialNetwork';\nimport BlogLayout from \"../../components/BlogLayout\";\nexport default (() => __jsx(\"div\", null, __jsx(BlogLayout, null, __jsx(NewSocialNetwork, null))));","map":null,"metadata":{},"sourceType":"module"}

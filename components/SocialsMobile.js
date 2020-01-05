@@ -1,21 +1,17 @@
-import MastadonSVG from '../images/mastadon.svg';
-import InstagramSVG from '../images/instagram.svg';
-import RedditSVG from '../images/reddit.svg';
-
 const SocialsMobile = () => (
   <div>
     <section className="socials-nav">
     <ul>
       <li>
-        <MastadonSVG/>
+        <img src="/static/mastadon.svg"/>
         <a href="https://mastodon.design/@victorkernes" target="_blank"></a>
       </li>
       <li>
-        <InstagramSVG/>
+        <img src="/static/instagram.svg"/>
         <a href="https://www.instagram.com/victorkernes/" target="_blank"></a>
       </li>
       <li>
-        <RedditSVG/>
+        <img src="/static/reddit.svg"/>
         <a href="https://www.reddit.com/user/victorkernes" target="_blank"></a>
       </li>
     </ul>

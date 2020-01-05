@@ -1,50 +1,68 @@
-import Head from 'next/head';
-import About from './About';
-import Podcasts from './Podcasts';
-import People from './People';
-import Nav from './Nav';
-import Footer from './Footer';
+import Head from "next/head";
+import Footer from "./Footer";
 
-const Layout = (props) => (
+const Layout = props => (
   <div>
     <Head>
-      <title>Victor Kernes</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cloud.typography.com/6931734/6253212/css/fonts.css"
+      />
+      <link
+        rel="icon"
+        type="image/x-icon"
+        href="../static/favicon/favicon.ico"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="../static/favicon/apple-touch-icon.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="../static/favicon/favicon-32x32.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="../static/favicon/favicon-16x16.png"
+      />
+      <link rel="manifest" href="../static/favicon/site.webmanifest" />
+      <title>@victorkernes</title>
     </Head>
-    <div className="container">
-      {props.children}
-    </div>
-    <div className="content">
-      <About/>
-      <Podcasts/>
-      <People/>
-    </div>
-    <Footer/>
-    
-    <style jsx>{`
+    {props.children}
+    <Footer />
+    <style jsx global>{`
       * {
-        margin: 0;
         padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
-      .content {
-        max-width: 1080px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(3, auto);
-        align-items: start;
-        justify-items: center;
+      html {
+        font-family: "Ideal Sans A", "Ideal Sans B", -apple-system, BlinkMacSystemFont,
+          San Francisco, Roboto, Segoe UI, Helvetica Neue, sans-serif;
+        text-size-adjust: 100%;
+        text-rendering: optimizeLegibility;
       }
-      @media (max-width: 1024px) {
-        .content {
-          grid-template-columns: repeat(2, auto);
-        }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
       }
-      @media (max-width: 720px) {
-        .content {
-          grid-template-columns: repeat(1, auto);
-        }
+      body {
+        background-color: #202123;
+        color: rgb(255, 255, 255);
       }
-      `}
-    </style>
+    `}</style>
   </div>
 );
 

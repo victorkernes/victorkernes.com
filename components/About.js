@@ -1,59 +1,140 @@
-import Blog from './Blog';
-import Map from '../images/san-francisco-map.svg';
-
 const About = () => (
-  <div>
+  <div className="container">
     <section>
-      <div className="mobile-map">
-        <Map/>
-      </div>
       <header>
-        <h2>About</h2>
+        <h1>
+          Hi. I’m{" "}
+          <a className="hover" href="/work">
+            @victorkernes.
+          </a>
+        </h1>
+        <h2>
+          I design and code at Virta Health, <br />
+          where we reverse type 2 diabetes.
+        </h2>
+        <h2>Based in San Francisco.</h2>
+        <div className="follow">
+          <a
+            className="inline"
+            href="https://twitter.com/intent/tweet?text=%F0%9F%91%8B@victorkernes"
+            target="_blank"
+          >
+            <img className="twitter" src="/static/twitter.svg" />
+            <p className="follow-text">Tweet, tweet.</p>
+          </a>
+        </div>
       </header>
-      <p>
-        You can find me in San Francisco, where I’m always available to grab a coffee or go on a walk.
-      </p>
-      <p>
-        When I’m not working, I tend to play lots of basketball indoors. Got to protect those joints.
-      </p>
-      <p>
-        Sometimes I’ll play video games but I’m horrible. Let me know if you want to carry me to the end in a game of Fortnite.
-      </p>
-      <Blog/>
     </section>
     <style jsx>{`
-    * {
-      padding: 0;
-    }
-    section {
-      max-width: 308px;
-      flex-direction: column;
-    }
-    h2 {
+      div {
+        width: 100%;
+      }
+      .container {
+        animation: fadein 2s;
+      }
+      @keyframes fadein {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      section {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        height: 100vh;
+      }
+      h1 {
         font-size: 40px;
-        font-weight: 800;
-        color: #fff;
+        font-weight: 600;
+        margin-bottom: 16px;
+        text-align: left;
       }
-    p {
-      font-size: 22px;
-      font-weight: 300;
-      color: #c3c3c3;
-      line-height: 34px;
-    }
-    @media (min-width: 720px) {
-      .mobile-map {
-        display: none;
-      }
-    }
-    @media (max-width: 720px) {
       h2 {
-        font-size: 32px;
+        font-size: 24px;
+        font-weight: 300;
+        padding-bottom: 24px;
+        text-align: left;
+        line-height: 38px;
       }
-      p {
-        font-size: 18px;
-        line-height: 28px;
+      h2:nth-child(3) {
+        padding-bottom: 0;
       }
-    }
+      .twitter {
+        margin-top: 48px;
+      }
+      .follow,
+      .follow a {
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .follow .twitter {
+        height: 24px;
+        width: 24px;
+        transition: all 0.2s ease-in-out;
+      }
+      .follow:hover .twitter {
+        transform: scale(1.4);
+      }
+      .inline {
+        display: inline-flex;
+        align-items: center;
+      }
+      .follow .follow-text {
+        visibility: hidden;
+        margin-left: 16px;
+        font-size: 16px;
+        padding: 8px 16px;
+        border-radius: 16px 16px 16px 0;
+        background: rgba(255, 255, 255, 0.1);
+        font-weight: 400;
+        opacity: 0;
+        text-decoration: none;
+        transition: visibility 0s, opacity 0.7s linear;
+      }
+      .follow:hover .follow-text {
+        visibility: visible;
+        color: #fff;
+        opacity: 1;
+      }
+      h1 a {
+        font-size: 40px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        text-align: left;
+        color: rgba(255, 255, 255, 1);
+        text-decoration: none;
+        transition: all 0.1s ease-in-out;
+      }
+      h1 a:hover {
+        color: #8c7df7;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+      }
+      h3 {
+        padding-bottom: 8px;
+      }
+      header {
+        padding-bottom: 24px;
+        text-align: left;
+        margin: 0 auto;
+      }
+      @media (max-width: 720px) {
+        h1,
+        h1 a {
+          font-size: 32px;
+        }
+        h2 {
+          font-size: 18px;
+          line-height: 28px;
+        }
+        header {
+          padding-right: 2rem;
+          padding-left: 2rem;
+        }
+      }
     `}</style>
   </div>
 );

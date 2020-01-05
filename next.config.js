@@ -1,8 +1,8 @@
-// next.config.js
-module.exports = {
-    exportPathMap: function () {
-      return {
-        '/': { page: '/' }
-      }
-    }
-  }
+// module.exports = {
+//   target: 'serverless',
+//   exportPathMap: function () {
+//     return {
+//       '/': { page: '/' }
+//     }
+//   }
+// }

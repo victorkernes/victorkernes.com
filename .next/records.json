@@ -1,0 +1,55 @@
+{
+  "modules": {
+    "byIdentifier": {},
+    "usedIds": {}
+  },
+  "chunks": {
+    "byName": {
+      "static/runtime/webpack.js": 0,
+      "commons": 1,
+      "static/UvJyCY9-iv9G729gap-dc/pages/App.js": 2,
+      "static/UvJyCY9-iv9G729gap-dc/pages/_app.js": 3,
+      "static/UvJyCY9-iv9G729gap-dc/pages/_error.js": 4,
+      "static/UvJyCY9-iv9G729gap-dc/pages/blog.js": 5,
+      "static/UvJyCY9-iv9G729gap-dc/pages/blog/dribbble-api-react.js": 6,
+      "static/UvJyCY9-iv9G729gap-dc/pages/blog/new-social-network.js": 7,
+      "static/UvJyCY9-iv9G729gap-dc/pages/blog/one-day-remote-work.js": 8,
+      "static/UvJyCY9-iv9G729gap-dc/pages/index.js": 9,
+      "static/UvJyCY9-iv9G729gap-dc/pages/now.js": 10,
+      "static/UvJyCY9-iv9G729gap-dc/pages/work.js": 11,
+      "static/UvJyCY9-iv9G729gap-dc/pages/work/app-icons.js": 12,
+      "static/UvJyCY9-iv9G729gap-dc/pages/work/branding.js": 13,
+      "static/UvJyCY9-iv9G729gap-dc/pages/work/dribbble.js": 14,
+      "static/UvJyCY9-iv9G729gap-dc/pages/work/iconography.js": 15,
+      "static/UvJyCY9-iv9G729gap-dc/pages/work/illustrations.js": 16,
+      "static/UvJyCY9-iv9G729gap-dc/pages/work/product-design.js": 17,
+      "static/UvJyCY9-iv9G729gap-dc/pages/work/user-research.js": 18,
+      "static/runtime/main.js": 19,
+      "static/runtime/polyfills.js": 20
+    },
+    "bySource": {},
+    "usedIds": [
+      0,
+      1,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      2,
+      20,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  }
+}

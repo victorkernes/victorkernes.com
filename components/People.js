@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import Social from './Social';
 
 const People = () => (
