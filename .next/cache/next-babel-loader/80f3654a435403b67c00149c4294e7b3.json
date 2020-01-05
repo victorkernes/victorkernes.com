@@ -1,0 +1,1 @@
+{"ast":null,"code":"var __jsx = React.createElement;\nimport React from \"react\";\nimport Layout from \"../components/Layout\";\n\nclass App extends React.Component {\n  render() {\n    return __jsx(Layout, null);\n  }\n\n}\n\nexport default App;","map":null,"metadata":{},"sourceType":"module"}

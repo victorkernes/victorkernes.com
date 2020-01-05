@@ -1,8 +1,8 @@
 import RemotePost from '../../components/RemotePost';
-import Layout from '../../components/Layout';
+import BlogLayout from '../../components/BlogLayout';
 
 export default () => (
-<Layout>
+<BlogLayout>
   <RemotePost />
-</Layout>
+</BlogLayout>
 )

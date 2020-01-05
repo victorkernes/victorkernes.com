@@ -1,9 +1,10 @@
 import NewSocialNetwork from '../../components/NewSocialNetwork';
-import Footer from '../../components/Footer';
+import BlogLayout from "../../components/BlogLayout";
 
 export default () => (
   <div>
-  <NewSocialNetwork />
-  <Footer />
+    <BlogLayout>
+      <NewSocialNetwork />
+    </BlogLayout>
   </div>
-)
+);

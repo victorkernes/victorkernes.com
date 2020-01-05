@@ -1,9 +1,10 @@
-import About from '../components/About';
-import Footer from '../components/Footer';
+import About from "../components/About";
+import Layout from "../components/Layout";
 
 export default () => (
   <div>
-    <About/>
-    <Footer />
+    <Layout>
+      <About />
+    </Layout>
   </div>
-)
+);

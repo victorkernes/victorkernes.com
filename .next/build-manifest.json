@@ -1,23 +1,37 @@
 {
   "devFiles": [
-    "static/development/dll/dll_0a5735af42686c2a38b2.js"
+    "static/development/dll/dll_4b8bef20edde04f98d3f.js",
+    "static/development/dll/dll_4b8bef20edde04f98d3f.js.map"
   ],
   "pages": {
+    "/": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js",
+      "static/webpack/static/runtime/main.js.f1edee08fc625ee395ef.hot-update.js"
+    ],
     "/_app": [
       "static/runtime/webpack.js",
-      "static/runtime/main.js"
+      "static/runtime/main.js",
+      "static/webpack/static/runtime/main.js.f1edee08fc625ee395ef.hot-update.js"
     ],
     "/_error": [
       "static/runtime/webpack.js",
-      "static/runtime/main.js"
+      "static/runtime/main.js",
+      "static/webpack/static/runtime/main.js.f1edee08fc625ee395ef.hot-update.js"
+    ],
+    "/_polyfills": [
+      "static/runtime/polyfills.js",
+      "static/runtime/polyfills.js.map"
     ],
     "/index": [
       "static/runtime/webpack.js",
-      "static/runtime/main.js"
+      "static/runtime/main.js",
+      "static/webpack/static/runtime/main.js.f1edee08fc625ee395ef.hot-update.js"
     ],
-    "/": [
+    "/work/dribbble": [
       "static/runtime/webpack.js",
-      "static/runtime/main.js"
+      "static/runtime/main.js",
+      "static/webpack/static/runtime/main.js.f1edee08fc625ee395ef.hot-update.js"
     ]
   }
 }

@@ -33,45 +33,59 @@ const NowPost = () => (
       </p>
     </section>
     <style jsx>{`
-    @import url('https://rsms.me/inter/inter-ui.css');
     * {
-      padding: 0;
-      margin: 0;
-      font-family: 'Inter UI', sans-serif;
-    }
+        padding: 0;
+        margin: 0;
+      }
     div {
       width: 100%;
       background: #fff;
       border-radius: 4px;
-    }
-    section {
-      max-width: 720px;
       margin: 0 auto;
     }
-    h2 {
-      font-size: 40px;
-      font-weight: 800;
-      color: #111112;
-      padding-bottom: 16px;
+    section {
+      max-width: 640px;
+      padding: 32px;
+      padding-bottom: 56px;
+      margin: 0 auto;
     }
-    h3 {
-      font-size: 32px;
-      font-weight: 800;
-      color: #111112;
+    header {
+      margin: 0 auto;
+      text-align: left;
+      padding-top: 2rem;
+    } 
+    h2 {
+      font-size: 72px;
+      color: #111111;
       padding-bottom: 8px;
+      font-family: "Quarto A", "Quarto B";
+      font-style: normal;
+      font-weight: 800;
+      letter-spacing: -0.05px;
     }
     p {
-      font-size: 18px;
-      font-weight: normal;
+      font-size: 24px;
       color: #111112;
       line-height: 1.5;
       padding-bottom: 16px;
+      font-family: "Sentinel A", "Sentinel B";
+      font-style: normal;
+      font-weight: 400;
+    }
+    strong {
+      font-family: "Sentinel A", "Sentinel B";
+      font-style: normal;
+      font-weight: 600;
+    }
+    ol {
+      list-style-position: inside;
     }
     li {
-      font-size: 20px;
-      font-weight: normal;
-      color: black;
-      line-height: 32px;
+      font-family: "Sentinel A", "Sentinel B";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 2;
     }
     span {
       font-size: 16px;
@@ -79,21 +93,17 @@ const NowPost = () => (
       text-transform: uppercase;
     }
     a {
-      font-size: 18px;
       text-decoration: none;
-      font-weight: 600;
       color: #2455c3;
     }
     a:hover {
       padding-bottom: 4px;
       border-bottom: 2px solid #2455c3;
       cursor: pointer;
+      transition: 0.15s;
     }
     h2 a {
-      font-size: 40px;
-      font-weight: 800;
-      color: black;
-      padding-bottom: 16px;
+      color: #303030;
     }
     h2 a:hover {
       color: #2455c3;
@@ -101,12 +111,71 @@ const NowPost = () => (
       cursor: pointer;
       border-bottom: none;
     }
-    .container {
-      padding-top: 32px;
-      padding-bottom: 56px;
-    }
     header {
+      padding-bottom: 32px;
+    }
+    hr {
       padding-bottom: 24px;
+      margin: 0 auto;
+      letter-spacing: 16px;
+      text-align: center;
+      border: 0;
+    }
+    hr:before {
+      content: '...';
+      font-family: "Sentinel A", "Sentinel B";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 24px;
+      letter-spacing: 16px;
+    }
+    blockquote {
+      width: 100%;
+      padding-left: 24px;
+      padding-right: 24px;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    blockquote span {
+      font-family: "Sentinel A", "Sentinel B";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 24px;
+    }
+    .post-date {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      color: #595959;
+      padding-bottom: 0;
+    }
+    .post-date a {
+      color: #2455c3;
+      
+    }
+    .post-date a:hover  {
+      color: #2455c3;
+      border: none;
+      cursor: pointer;
+    }
+    .post-author a {
+      font-family: "Sentinel A", "Sentinel B";
+      font-style: italic;
+      font-weight: 400;
+      color: #2455c3;
+    }
+    .post-author a:hover {
+      padding-bottom: 4px;
+      border-bottom: 2px solid #2455c3;
+      cursor: pointer;
+    }
+    .post-author {
+      font-family: "Sentinel A", "Sentinel B";
+      font-style: italic;
+      font-weight: 400;
+      font-size: 18px;
+      color: #595959;
+      padding-bottom: 0;
     }
   `}</style>
   </div>
