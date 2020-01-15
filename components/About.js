@@ -2,15 +2,12 @@ const About = () => (
   <div className="container">
     <section>
       <header>
+        <h2>Hi, my name is</h2>
         <h1>
-          Hi. I’m{" "}
-          <a className="hover" href="/work">
-            @victorkernes.
-          </a>
+          Victor Kernes
         </h1>
         <h2>
-          I design and code at Virta Health, <br />
-          where we reverse type 2 diabetes.
+          I design and code.
         </h2>
         <h2>Based in San Francisco.</h2>
         <div className="follow">
@@ -20,7 +17,7 @@ const About = () => (
             target="_blank"
           >
             <img className="twitter" src="/static/twitter.svg" />
-            <p className="follow-text">Tweet, tweet.</p>
+            <p className="follow-text">Tweet a short message, if ya like 😏.</p>
           </a>
         </div>
       </header>

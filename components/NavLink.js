@@ -2,7 +2,7 @@ import { withRouter } from "next/router";
 
 function ActiveLink({ children, router, href }) {
   const style = {
-    borderBottom: router.pathname === href ? "2px solid #8c7df7" : "none",
+    // borderBottom: router.pathname === href ? "2px solid #8c7df7" : "none",
     fontWeight: "600",
     textDecoration: "none",
     color: "#fff",
