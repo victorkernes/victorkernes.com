@@ -6,18 +6,17 @@
   "pages": {
     "/": [
       "static/runtime/webpack.js",
-      "static/runtime/main.js",
-      "static/webpack/static/runtime/main.js.f1edee08fc625ee395ef.hot-update.js"
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/runtime/main.js"
     ],
     "/_app": [
       "static/runtime/webpack.js",
-      "static/runtime/main.js",
-      "static/webpack/static/runtime/main.js.f1edee08fc625ee395ef.hot-update.js"
+      "static/runtime/main.js"
     ],
     "/_error": [
       "static/runtime/webpack.js",
-      "static/runtime/main.js",
-      "static/webpack/static/runtime/main.js.f1edee08fc625ee395ef.hot-update.js"
+      "static/runtime/main.js"
     ],
     "/_polyfills": [
       "static/runtime/polyfills.js",
@@ -25,13 +24,9 @@
     ],
     "/index": [
       "static/runtime/webpack.js",
-      "static/runtime/main.js",
-      "static/webpack/static/runtime/main.js.f1edee08fc625ee395ef.hot-update.js"
-    ],
-    "/work/dribbble": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js",
-      "static/webpack/static/runtime/main.js.f1edee08fc625ee395ef.hot-update.js"
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/runtime/main.js"
     ]
   }
 }
