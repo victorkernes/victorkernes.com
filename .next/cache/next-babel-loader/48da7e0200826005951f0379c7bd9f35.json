@@ -1,1 +1,0 @@
-{"ast":null,"code":"var __jsx = React.createElement;\nimport React from \"react\";\nimport Layout from \"../components/Layout\";\nimport Blog from \"../components/Blog\";\nexport default (() => __jsx(\"div\", null, __jsx(Layout, null, __jsx(Blog, null))));","map":null,"metadata":{},"sourceType":"module"}

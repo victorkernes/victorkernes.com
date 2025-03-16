@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Victor Kernes - Digital software designer, writer, marketer based in San Francisco">
+    <title>Victor Kernes</title>
+    <link rel="stylesheet" href="https://vercel.com/font/mono/css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <main class="letter">
+        <div class="letter-content">
+            <header class="letter-header">
+                <p>Victor Kernes</p>
+                <p>San Francisco, CA</p>
+                <p><span id="currentDate"></span></p>
+            </header>
+
+            <div class="letter-body">
+                <p class="greeting">Hey there, welcome to my site.</p>
+
+                <p>I’m a software designer with <a class="link" href="https://www.linkedin.com/in/victorkernes/" target="_blank">over a decade</a> of experience designing apps and websites for desktop and mobile.</p>
+                
+                <p>Currently, I lead product design at <a class="link" href="https://www.lawfty.com" target="_blank"">Lawfty</a>. Previously, I’ve worked with teams at <a class="link" href="https://www.hodinkee.com">Hodinkee</a>, <a class="link" href="https://www.gradescope.com" target="_blank">Gradescope</a>, and <a class="link" href="https://www.virtahealth.com" target="_blank">Virta Health</a>.</p>
+
+                <p>You can view some of my previous work <a class="link" href="https://www.figma.com/design/18L7o9JIIiEO9PrqKcTdtP/Victor-Kernes-%2F-Case-Studies" target="_blank">here</a>.</p>
+
+                <p>I also freelance part-time, helping startups with 0>1 projects, creating design systems, and building interactive prototypes.</p>
+                
+                <p>I appreciate you stopping by — if you have any questions or would like to work together, <a class="link" href="mailto:hi@victorkernes.com" target="_blank">send me an email</a>. I’d love to chat and see how we can make something great.</p>
+
+                <p>Sincerely,</p>
+
+                <div class="signature">
+                    <p class="name">Victor Kernes</p>
+                    <p class="contact"><a class="link" href="tel:+14154890132">+1 415 489 0132</a></p>
+                    <p class="email"><a class="link" href="mailto:hi@victorkernes.com">hi@victorkernes.com</a></p>
+                </div>
+
+                <div class="socials">
+                    <p><a class="link" href="https://presentable.substack.com" target="_blank">Newsletter</a></p>
+                    <p><a class="link" href="https://www.linkedin.com/in/victorkernes/" target="_blank">Linkedin</a></p>
+                    <p><a class="link" href="https://www.instagram.com/victorkernes/" target="_blank">Instagram</a></p>
+                    <p><a class="link" href="https://www.youtube.com/@victorkernes" target="_blank">YouTube</a></p>
+                </div>
+            </div>
+
+            <footer class="letter-footer">
+                <p>&copy; 2025 Victor Kernes LLC.</p>
+            </footer>
+        </div>
+    </main>
+</body>
+
+<script>
+    // Get the current date
+    const today = new Date();
+    
+    // Format the date as "MM/DD/YYYY"
+    const options = { 
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    };
+    const formattedDate = today.toLocaleDateString('en-US', options);
+    
+    // Display the date in the HTML
+    document.getElementById("currentDate").textContent = formattedDate;
+</script>
+
+</html>

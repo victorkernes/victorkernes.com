@@ -1,1 +1,0 @@
-{"code":"(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{GNQ8:function(n,i,t){(window.__NEXT_P=window.__NEXT_P||[]).push([\"/app/Blog\",function(){return t(\"Pr9i\")}])},Pr9i:function(n,i,t){\"use strict\";t.r(i);var e=t(\"q1tI\"),o=t.n(e).a.createElement;i.default=function(){return o(\"p\",null,\"This is the Blog Page\")}}},[[\"GNQ8\",0,1]]]);"}

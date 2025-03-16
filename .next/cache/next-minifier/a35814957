@@ -1,1 +1,0 @@
-{"code":"(window.webpackJsonp=window.webpackJsonp||[]).push([[9],{FUT5:function(n,e,t){\"use strict\";t.r(e);var o=t(\"q1tI\"),i=t.n(o).a.createElement;e.default=function(){return i(\"p\",null,\"This is the Home Page\")}},z2PA:function(n,e,t){(window.__NEXT_P=window.__NEXT_P||[]).push([\"/app/Home\",function(){return t(\"FUT5\")}])}},[[\"z2PA\",0,1]]]);"}

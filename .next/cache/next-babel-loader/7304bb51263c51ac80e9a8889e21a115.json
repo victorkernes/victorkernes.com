@@ -1,1 +1,0 @@
-{"ast":null,"code":"import React from \"react\";\nvar __jsx = React.createElement;\nimport VlogPost from \"../../components/VlogPost\";\nimport BlogLayout from \"../../components/BlogLayout\";\nexport default (function () {\n  return __jsx(BlogLayout, null, __jsx(VlogPost, null));\n});","map":null,"metadata":{},"sourceType":"module"}
