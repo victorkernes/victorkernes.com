@@ -1,7 +1,19 @@
+@font-face {
+    font-family: 'Geist Mono';
+    src: url('fonts/GeistMono-Regular.woff2') format('woff2'),
+         url('fonts/GeistMono-Regular.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --bg-color: #ffffff;
     --text-color: #000000;
     --link-color: #000000;
+    --secondary-text: #666666;
+    --border-color: #e5e5e5;
+    --link-underline-color: rgba(0, 0, 0, 0.3);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -9,6 +21,7 @@
         --bg-color: #000000;
         --text-color: #ffffff;
         --link-color: #ffffff;
+        --link-underline-color: rgba(255, 255, 255, 0.3);
     }
 }
 
@@ -78,11 +91,13 @@ body {
 
 .link {
     color: var(--link-color);
-    text-decoration: underline;
+    text-decoration: none;
+    border-bottom: 1px solid var(--link-underline-color);
+    transition: border-color 0.2s ease;
 }
 
 .link:hover {
-    text-decoration: underline;
+    border-color: var(--link-color);
 }
 
 .letter-footer {
